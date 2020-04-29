@@ -1,0 +1,1020 @@
+21:22:02 **** Clean-only build of configuration Debug for project GlobusSatProject ****
+make -r -k clean 
+rm -rf  GlobusSatProject.siz  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o  ./src/TestingDemos/CommandsTestingDemo.d ./src/TestingDemos/EpsTestingDemo.d ./src/TestingDemos/FileSystemTestingDemo.d ./src/TestingDemos/MainTest.d ./src/TestingDemos/MaintenanceTestingDemo.d ./src/TestingDemos/TelemetryTestingDemo.d ./src/TestingDemos/TrxvuTestingDemo.d  ./src/SubSystemModules/PowerManagment/EPS.d ./src/SubSystemModules/PowerManagment/EPSOperationModes.d  ./src/SubSystemModules/Maintenance/Maintenance.d ./src/SubSystemModules/Maintenance/SatMacros.d  ./src/SubSystemModules/Housekepping/TelemetryCollector.d  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d  ./src/SubSystemModules/Communication/AckHandler.d ./src/SubSystemModules/Communication/ActUponCommand.d ./src/SubSystemModules/Communication/Beacon.d ./src/SubSystemModules/Communication/CommandDictionary.d ./src/SubSystemModules/Communication/SatCommandHandler.d ./src/SubSystemModules/Communication/SatDataTx.d ./src/SubSystemModules/Communication/TRXVU.d  ./src/InitSystem.d ./src/TLM_management.d ./src/main.d  GlobusSatProject.bin  GlobusSatProject.elf
+ 
+21:22:12 **** Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/TestingDemos/CommandsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/CommandsTestingDemo.d" -MT"src/TestingDemos/CommandsTestingDemo.d" -c -o "src/TestingDemos/CommandsTestingDemo.o" "../src/TestingDemos/CommandsTestingDemo.c"
+Finished building: ../src/TestingDemos/CommandsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/EpsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/EpsTestingDemo.d" -MT"src/TestingDemos/EpsTestingDemo.d" -c -o "src/TestingDemos/EpsTestingDemo.o" "../src/TestingDemos/EpsTestingDemo.c"
+Finished building: ../src/TestingDemos/EpsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/FileSystemTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/FileSystemTestingDemo.d" -MT"src/TestingDemos/FileSystemTestingDemo.d" -c -o "src/TestingDemos/FileSystemTestingDemo.o" "../src/TestingDemos/FileSystemTestingDemo.c"
+Finished building: ../src/TestingDemos/FileSystemTestingDemo.c
+ 
+Building file: ../src/TestingDemos/MainTest.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MainTest.d" -MT"src/TestingDemos/MainTest.d" -c -o "src/TestingDemos/MainTest.o" "../src/TestingDemos/MainTest.c"
+Finished building: ../src/TestingDemos/MainTest.c
+ 
+Building file: ../src/TestingDemos/MaintenanceTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MaintenanceTestingDemo.d" -MT"src/TestingDemos/MaintenanceTestingDemo.d" -c -o "src/TestingDemos/MaintenanceTestingDemo.o" "../src/TestingDemos/MaintenanceTestingDemo.c"
+Finished building: ../src/TestingDemos/MaintenanceTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TelemetryTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TelemetryTestingDemo.d" -MT"src/TestingDemos/TelemetryTestingDemo.d" -c -o "src/TestingDemos/TelemetryTestingDemo.o" "../src/TestingDemos/TelemetryTestingDemo.c"
+Finished building: ../src/TestingDemos/TelemetryTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TrxvuTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TrxvuTestingDemo.d" -MT"src/TestingDemos/TrxvuTestingDemo.d" -c -o "src/TestingDemos/TrxvuTestingDemo.o" "../src/TestingDemos/TrxvuTestingDemo.c"
+Finished building: ../src/TestingDemos/TrxvuTestingDemo.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPS.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPS.d" -MT"src/SubSystemModules/PowerManagment/EPS.d" -c -o "src/SubSystemModules/PowerManagment/EPS.o" "../src/SubSystemModules/PowerManagment/EPS.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPS.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -MT"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -c -o "src/SubSystemModules/PowerManagment/EPSOperationModes.o" "../src/SubSystemModules/PowerManagment/EPSOperationModes.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/Maintenance.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/Maintenance.d" -MT"src/SubSystemModules/Maintenance/Maintenance.d" -c -o "src/SubSystemModules/Maintenance/Maintenance.o" "../src/SubSystemModules/Maintenance/Maintenance.c"
+Finished building: ../src/SubSystemModules/Maintenance/Maintenance.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/SatMacros.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/SatMacros.d" -MT"src/SubSystemModules/Maintenance/SatMacros.d" -c -o "src/SubSystemModules/Maintenance/SatMacros.o" "../src/SubSystemModules/Maintenance/SatMacros.c"
+Finished building: ../src/SubSystemModules/Maintenance/SatMacros.c
+ 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+../src/SubSystemModules/Housekepping/TelemetryCollector.c: In function 'TelemetrySaveEPS':
+../src/SubSystemModules/Housekepping/TelemetryCollector.c:175:3: warning: passing argument 2 of 'isis_eps__gethousekeepingengrunningavgincdb__tm' from incompatible pointer type [enabled by default]
+In file included from ../src/SubSystemModules/Housekepping/TelemetryCollector.c:5:0:
+C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include/satellite-subsystems/isis_eps_driver.h:1003:5: note: expected 'union isis_eps__gethousekeepingengrunningavgincdb__from_t *' but argument is of type 'union isis_eps__gethousekeepingraw__from_t *'
+../src/SubSystemModules/Housekepping/TelemetryCollector.c:178:3: warning: passing argument 2 of 'isis_eps__gethousekeepingraw__tm' from incompatible pointer type [enabled by default]
+In file included from ../src/SubSystemModules/Housekepping/TelemetryCollector.c:5:0:
+C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include/satellite-subsystems/isis_eps_driver.h:963:5: note: expected 'union isis_eps__gethousekeepingraw__from_t *' but argument is of type 'union isis_eps__gethousekeepingrawincdb__from_t *'
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/AckHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/AckHandler.d" -MT"src/SubSystemModules/Communication/AckHandler.d" -c -o "src/SubSystemModules/Communication/AckHandler.o" "../src/SubSystemModules/Communication/AckHandler.c"
+Finished building: ../src/SubSystemModules/Communication/AckHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/ActUponCommand.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/ActUponCommand.d" -MT"src/SubSystemModules/Communication/ActUponCommand.d" -c -o "src/SubSystemModules/Communication/ActUponCommand.o" "../src/SubSystemModules/Communication/ActUponCommand.c"
+Finished building: ../src/SubSystemModules/Communication/ActUponCommand.c
+ 
+Building file: ../src/SubSystemModules/Communication/Beacon.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/Beacon.d" -MT"src/SubSystemModules/Communication/Beacon.d" -c -o "src/SubSystemModules/Communication/Beacon.o" "../src/SubSystemModules/Communication/Beacon.c"
+Finished building: ../src/SubSystemModules/Communication/Beacon.c
+ 
+Building file: ../src/SubSystemModules/Communication/CommandDictionary.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/CommandDictionary.d" -MT"src/SubSystemModules/Communication/CommandDictionary.d" -c -o "src/SubSystemModules/Communication/CommandDictionary.o" "../src/SubSystemModules/Communication/CommandDictionary.c"
+Finished building: ../src/SubSystemModules/Communication/CommandDictionary.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatCommandHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatCommandHandler.d" -MT"src/SubSystemModules/Communication/SatCommandHandler.d" -c -o "src/SubSystemModules/Communication/SatCommandHandler.o" "../src/SubSystemModules/Communication/SatCommandHandler.c"
+Finished building: ../src/SubSystemModules/Communication/SatCommandHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatDataTx.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatDataTx.d" -MT"src/SubSystemModules/Communication/SatDataTx.d" -c -o "src/SubSystemModules/Communication/SatDataTx.o" "../src/SubSystemModules/Communication/SatDataTx.c"
+Finished building: ../src/SubSystemModules/Communication/SatDataTx.c
+ 
+Building file: ../src/SubSystemModules/Communication/TRXVU.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/TRXVU.d" -MT"src/SubSystemModules/Communication/TRXVU.d" -c -o "src/SubSystemModules/Communication/TRXVU.o" "../src/SubSystemModules/Communication/TRXVU.c"
+../src/SubSystemModules/Communication/TRXVU.c: In function 'getTelemetryMetaData':
+../src/SubSystemModules/Communication/TRXVU.c:174:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/SubSystemModules/Communication/TRXVU.c: In function 'DumpTask':
+../src/SubSystemModules/Communication/TRXVU.c:205:2: warning: pointer targets in passing argument 3 of 'getTelemetryMetaData' differ in signedness [-Wpointer-sign]
+../src/SubSystemModules/Communication/TRXVU.c:168:5: note: expected 'int *' but argument is of type 'unsigned int *'
+Finished building: ../src/SubSystemModules/Communication/TRXVU.c
+ 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+../src/InitSystem.c: In function 'firstActivationProcedure':
+../src/InitSystem.c:65:2: warning: implicit declaration of function 'IsisAntS_autoDeployment' [-Wimplicit-function-declaration]
+../src/InitSystem.c:65:29: error: 'isisants_sideA' undeclared (first use in this function)
+../src/InitSystem.c:65:29: note: each undeclared identifier is reported only once for each function it appears in
+../src/InitSystem.c:66:29: error: 'isisants_sideB' undeclared (first use in this function)
+make: *** [src/InitSystem.o] Error 1
+Building file: ../src/TLM_management.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TLM_management.d" -MT"src/TLM_management.d" -c -o "src/TLM_management.o" "../src/TLM_management.c"
+../src/TLM_management.c: In function 'c_fileGetSizeOfElement':
+../src/TLM_management.c:316:7: warning: unused variable 'curr_file_name' [-Wunused-variable]
+Finished building: ../src/TLM_management.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/main.d" -MT"src/main.d" -c -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+make: Target `all' not remade because of errors.
+21:22:20 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+21:22:21 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+21:22:30 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:22:32 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+21:22:32 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+21:22:42 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:23:54 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:24:26 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:26:32 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202976	     12	 303012	 506000	  7b890	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:26:34 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+21:26:34 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+21:27:58 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202976	     12	 303012	 506000	  7b890	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:31:19 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:31:50 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:38:04 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/SubSystemModules/Communication/TRXVU.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/TRXVU.d" -MT"src/SubSystemModules/Communication/TRXVU.d" -c -o "src/SubSystemModules/Communication/TRXVU.o" "../src/SubSystemModules/Communication/TRXVU.c"
+../src/SubSystemModules/Communication/TRXVU.c: In function 'getTelemetryMetaData':
+../src/SubSystemModules/Communication/TRXVU.c:174:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/SubSystemModules/Communication/TRXVU.c: In function 'DumpTask':
+../src/SubSystemModules/Communication/TRXVU.c:205:2: warning: pointer targets in passing argument 3 of 'getTelemetryMetaData' differ in signedness [-Wpointer-sign]
+../src/SubSystemModules/Communication/TRXVU.c:168:5: note: expected 'int *' but argument is of type 'unsigned int *'
+Finished building: ../src/SubSystemModules/Communication/TRXVU.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:38:06 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+21:38:07 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+21:38:33 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:40:27 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:41:17 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:41:55 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203368	     12	 303012	 506392	  7ba18	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:45:44 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202560	     12	 303012	 505584	  7b6f0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:45:46 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+21:45:46 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+21:47:14 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202560	     12	 303012	 505584	  7b6f0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+21:53:46 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/TestingDemos/CommandsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/CommandsTestingDemo.d" -MT"src/TestingDemos/CommandsTestingDemo.d" -c -o "src/TestingDemos/CommandsTestingDemo.o" "../src/TestingDemos/CommandsTestingDemo.c"
+Finished building: ../src/TestingDemos/CommandsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/EpsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/EpsTestingDemo.d" -MT"src/TestingDemos/EpsTestingDemo.d" -c -o "src/TestingDemos/EpsTestingDemo.o" "../src/TestingDemos/EpsTestingDemo.c"
+Finished building: ../src/TestingDemos/EpsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/FileSystemTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/FileSystemTestingDemo.d" -MT"src/TestingDemos/FileSystemTestingDemo.d" -c -o "src/TestingDemos/FileSystemTestingDemo.o" "../src/TestingDemos/FileSystemTestingDemo.c"
+Finished building: ../src/TestingDemos/FileSystemTestingDemo.c
+ 
+Building file: ../src/TestingDemos/MainTest.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MainTest.d" -MT"src/TestingDemos/MainTest.d" -c -o "src/TestingDemos/MainTest.o" "../src/TestingDemos/MainTest.c"
+Finished building: ../src/TestingDemos/MainTest.c
+ 
+Building file: ../src/TestingDemos/MaintenanceTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MaintenanceTestingDemo.d" -MT"src/TestingDemos/MaintenanceTestingDemo.d" -c -o "src/TestingDemos/MaintenanceTestingDemo.o" "../src/TestingDemos/MaintenanceTestingDemo.c"
+Finished building: ../src/TestingDemos/MaintenanceTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TelemetryTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TelemetryTestingDemo.d" -MT"src/TestingDemos/TelemetryTestingDemo.d" -c -o "src/TestingDemos/TelemetryTestingDemo.o" "../src/TestingDemos/TelemetryTestingDemo.c"
+Finished building: ../src/TestingDemos/TelemetryTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TrxvuTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TrxvuTestingDemo.d" -MT"src/TestingDemos/TrxvuTestingDemo.d" -c -o "src/TestingDemos/TrxvuTestingDemo.o" "../src/TestingDemos/TrxvuTestingDemo.c"
+Finished building: ../src/TestingDemos/TrxvuTestingDemo.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPS.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPS.d" -MT"src/SubSystemModules/PowerManagment/EPS.d" -c -o "src/SubSystemModules/PowerManagment/EPS.o" "../src/SubSystemModules/PowerManagment/EPS.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPS.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -MT"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -c -o "src/SubSystemModules/PowerManagment/EPSOperationModes.o" "../src/SubSystemModules/PowerManagment/EPSOperationModes.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/Maintenance.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/Maintenance.d" -MT"src/SubSystemModules/Maintenance/Maintenance.d" -c -o "src/SubSystemModules/Maintenance/Maintenance.o" "../src/SubSystemModules/Maintenance/Maintenance.c"
+Finished building: ../src/SubSystemModules/Maintenance/Maintenance.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/SatMacros.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/SatMacros.d" -MT"src/SubSystemModules/Maintenance/SatMacros.d" -c -o "src/SubSystemModules/Maintenance/SatMacros.o" "../src/SubSystemModules/Maintenance/SatMacros.c"
+Finished building: ../src/SubSystemModules/Maintenance/SatMacros.c
+ 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/AckHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/AckHandler.d" -MT"src/SubSystemModules/Communication/AckHandler.d" -c -o "src/SubSystemModules/Communication/AckHandler.o" "../src/SubSystemModules/Communication/AckHandler.c"
+Finished building: ../src/SubSystemModules/Communication/AckHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/ActUponCommand.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/ActUponCommand.d" -MT"src/SubSystemModules/Communication/ActUponCommand.d" -c -o "src/SubSystemModules/Communication/ActUponCommand.o" "../src/SubSystemModules/Communication/ActUponCommand.c"
+Finished building: ../src/SubSystemModules/Communication/ActUponCommand.c
+ 
+Building file: ../src/SubSystemModules/Communication/Beacon.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/Beacon.d" -MT"src/SubSystemModules/Communication/Beacon.d" -c -o "src/SubSystemModules/Communication/Beacon.o" "../src/SubSystemModules/Communication/Beacon.c"
+Finished building: ../src/SubSystemModules/Communication/Beacon.c
+ 
+Building file: ../src/SubSystemModules/Communication/CommandDictionary.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/CommandDictionary.d" -MT"src/SubSystemModules/Communication/CommandDictionary.d" -c -o "src/SubSystemModules/Communication/CommandDictionary.o" "../src/SubSystemModules/Communication/CommandDictionary.c"
+Finished building: ../src/SubSystemModules/Communication/CommandDictionary.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatCommandHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatCommandHandler.d" -MT"src/SubSystemModules/Communication/SatCommandHandler.d" -c -o "src/SubSystemModules/Communication/SatCommandHandler.o" "../src/SubSystemModules/Communication/SatCommandHandler.c"
+Finished building: ../src/SubSystemModules/Communication/SatCommandHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatDataTx.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatDataTx.d" -MT"src/SubSystemModules/Communication/SatDataTx.d" -c -o "src/SubSystemModules/Communication/SatDataTx.o" "../src/SubSystemModules/Communication/SatDataTx.c"
+Finished building: ../src/SubSystemModules/Communication/SatDataTx.c
+ 
+Building file: ../src/SubSystemModules/Communication/TRXVU.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/TRXVU.d" -MT"src/SubSystemModules/Communication/TRXVU.d" -c -o "src/SubSystemModules/Communication/TRXVU.o" "../src/SubSystemModules/Communication/TRXVU.c"
+../src/SubSystemModules/Communication/TRXVU.c: In function 'getTelemetryMetaData':
+../src/SubSystemModules/Communication/TRXVU.c:174:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/SubSystemModules/Communication/TRXVU.c: In function 'DumpTask':
+../src/SubSystemModules/Communication/TRXVU.c:205:2: warning: pointer targets in passing argument 3 of 'getTelemetryMetaData' differ in signedness [-Wpointer-sign]
+../src/SubSystemModules/Communication/TRXVU.c:168:5: note: expected 'int *' but argument is of type 'unsigned int *'
+Finished building: ../src/SubSystemModules/Communication/TRXVU.c
+ 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building file: ../src/TLM_management.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TLM_management.d" -MT"src/TLM_management.d" -c -o "src/TLM_management.o" "../src/TLM_management.c"
+../src/TLM_management.c: In function 'c_fileGetSizeOfElement':
+../src/TLM_management.c:316:7: warning: unused variable 'curr_file_name' [-Wunused-variable]
+Finished building: ../src/TLM_management.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/main.d" -MT"src/main.d" -c -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202560	     12	 303012	 505584	  7b6f0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:00:30 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 202560	     12	 303012	 505584	  7b6f0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:05:42 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/TestingDemos/CommandsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/CommandsTestingDemo.d" -MT"src/TestingDemos/CommandsTestingDemo.d" -c -o "src/TestingDemos/CommandsTestingDemo.o" "../src/TestingDemos/CommandsTestingDemo.c"
+Finished building: ../src/TestingDemos/CommandsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/EpsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/EpsTestingDemo.d" -MT"src/TestingDemos/EpsTestingDemo.d" -c -o "src/TestingDemos/EpsTestingDemo.o" "../src/TestingDemos/EpsTestingDemo.c"
+Finished building: ../src/TestingDemos/EpsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/FileSystemTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/FileSystemTestingDemo.d" -MT"src/TestingDemos/FileSystemTestingDemo.d" -c -o "src/TestingDemos/FileSystemTestingDemo.o" "../src/TestingDemos/FileSystemTestingDemo.c"
+Finished building: ../src/TestingDemos/FileSystemTestingDemo.c
+ 
+Building file: ../src/TestingDemos/MainTest.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MainTest.d" -MT"src/TestingDemos/MainTest.d" -c -o "src/TestingDemos/MainTest.o" "../src/TestingDemos/MainTest.c"
+Finished building: ../src/TestingDemos/MainTest.c
+ 
+Building file: ../src/TestingDemos/MaintenanceTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MaintenanceTestingDemo.d" -MT"src/TestingDemos/MaintenanceTestingDemo.d" -c -o "src/TestingDemos/MaintenanceTestingDemo.o" "../src/TestingDemos/MaintenanceTestingDemo.c"
+Finished building: ../src/TestingDemos/MaintenanceTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TelemetryTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TelemetryTestingDemo.d" -MT"src/TestingDemos/TelemetryTestingDemo.d" -c -o "src/TestingDemos/TelemetryTestingDemo.o" "../src/TestingDemos/TelemetryTestingDemo.c"
+Finished building: ../src/TestingDemos/TelemetryTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TrxvuTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TrxvuTestingDemo.d" -MT"src/TestingDemos/TrxvuTestingDemo.d" -c -o "src/TestingDemos/TrxvuTestingDemo.o" "../src/TestingDemos/TrxvuTestingDemo.c"
+Finished building: ../src/TestingDemos/TrxvuTestingDemo.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPS.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPS.d" -MT"src/SubSystemModules/PowerManagment/EPS.d" -c -o "src/SubSystemModules/PowerManagment/EPS.o" "../src/SubSystemModules/PowerManagment/EPS.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPS.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -MT"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -c -o "src/SubSystemModules/PowerManagment/EPSOperationModes.o" "../src/SubSystemModules/PowerManagment/EPSOperationModes.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/Maintenance.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/Maintenance.d" -MT"src/SubSystemModules/Maintenance/Maintenance.d" -c -o "src/SubSystemModules/Maintenance/Maintenance.o" "../src/SubSystemModules/Maintenance/Maintenance.c"
+Finished building: ../src/SubSystemModules/Maintenance/Maintenance.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/SatMacros.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/SatMacros.d" -MT"src/SubSystemModules/Maintenance/SatMacros.d" -c -o "src/SubSystemModules/Maintenance/SatMacros.o" "../src/SubSystemModules/Maintenance/SatMacros.c"
+Finished building: ../src/SubSystemModules/Maintenance/SatMacros.c
+ 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/AckHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/AckHandler.d" -MT"src/SubSystemModules/Communication/AckHandler.d" -c -o "src/SubSystemModules/Communication/AckHandler.o" "../src/SubSystemModules/Communication/AckHandler.c"
+Finished building: ../src/SubSystemModules/Communication/AckHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/ActUponCommand.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/ActUponCommand.d" -MT"src/SubSystemModules/Communication/ActUponCommand.d" -c -o "src/SubSystemModules/Communication/ActUponCommand.o" "../src/SubSystemModules/Communication/ActUponCommand.c"
+Finished building: ../src/SubSystemModules/Communication/ActUponCommand.c
+ 
+Building file: ../src/SubSystemModules/Communication/Beacon.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/Beacon.d" -MT"src/SubSystemModules/Communication/Beacon.d" -c -o "src/SubSystemModules/Communication/Beacon.o" "../src/SubSystemModules/Communication/Beacon.c"
+Finished building: ../src/SubSystemModules/Communication/Beacon.c
+ 
+Building file: ../src/SubSystemModules/Communication/CommandDictionary.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/CommandDictionary.d" -MT"src/SubSystemModules/Communication/CommandDictionary.d" -c -o "src/SubSystemModules/Communication/CommandDictionary.o" "../src/SubSystemModules/Communication/CommandDictionary.c"
+Finished building: ../src/SubSystemModules/Communication/CommandDictionary.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatCommandHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatCommandHandler.d" -MT"src/SubSystemModules/Communication/SatCommandHandler.d" -c -o "src/SubSystemModules/Communication/SatCommandHandler.o" "../src/SubSystemModules/Communication/SatCommandHandler.c"
+Finished building: ../src/SubSystemModules/Communication/SatCommandHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatDataTx.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatDataTx.d" -MT"src/SubSystemModules/Communication/SatDataTx.d" -c -o "src/SubSystemModules/Communication/SatDataTx.o" "../src/SubSystemModules/Communication/SatDataTx.c"
+Finished building: ../src/SubSystemModules/Communication/SatDataTx.c
+ 
+Building file: ../src/SubSystemModules/Communication/TRXVU.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/TRXVU.d" -MT"src/SubSystemModules/Communication/TRXVU.d" -c -o "src/SubSystemModules/Communication/TRXVU.o" "../src/SubSystemModules/Communication/TRXVU.c"
+../src/SubSystemModules/Communication/TRXVU.c: In function 'getTelemetryMetaData':
+../src/SubSystemModules/Communication/TRXVU.c:174:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/SubSystemModules/Communication/TRXVU.c: In function 'DumpTask':
+../src/SubSystemModules/Communication/TRXVU.c:205:2: warning: pointer targets in passing argument 3 of 'getTelemetryMetaData' differ in signedness [-Wpointer-sign]
+../src/SubSystemModules/Communication/TRXVU.c:168:5: note: expected 'int *' but argument is of type 'unsigned int *'
+Finished building: ../src/SubSystemModules/Communication/TRXVU.c
+ 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building file: ../src/TLM_management.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TLM_management.d" -MT"src/TLM_management.d" -c -o "src/TLM_management.o" "../src/TLM_management.c"
+../src/TLM_management.c: In function 'c_fileGetSizeOfElement':
+../src/TLM_management.c:316:7: warning: unused variable 'curr_file_name' [-Wunused-variable]
+Finished building: ../src/TLM_management.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/main.d" -MT"src/main.d" -c -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:06:28 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:08:18 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:08:48 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:11:41 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/SubSystemModules/Maintenance/Maintenance.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/Maintenance.d" -MT"src/SubSystemModules/Maintenance/Maintenance.d" -c -o "src/SubSystemModules/Maintenance/Maintenance.o" "../src/SubSystemModules/Maintenance/Maintenance.c"
+Finished building: ../src/SubSystemModules/Maintenance/Maintenance.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203520	     12	 303012	 506544	  7bab0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:12:56 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203520	     12	 303012	 506544	  7bab0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+22:20:24 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203520	     12	 303012	 506544	  7bab0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+23:08:01 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Building file: ../src/TestingDemos/CommandsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/CommandsTestingDemo.d" -MT"src/TestingDemos/CommandsTestingDemo.d" -c -o "src/TestingDemos/CommandsTestingDemo.o" "../src/TestingDemos/CommandsTestingDemo.c"
+Finished building: ../src/TestingDemos/CommandsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/EpsTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/EpsTestingDemo.d" -MT"src/TestingDemos/EpsTestingDemo.d" -c -o "src/TestingDemos/EpsTestingDemo.o" "../src/TestingDemos/EpsTestingDemo.c"
+Finished building: ../src/TestingDemos/EpsTestingDemo.c
+ 
+Building file: ../src/TestingDemos/FileSystemTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/FileSystemTestingDemo.d" -MT"src/TestingDemos/FileSystemTestingDemo.d" -c -o "src/TestingDemos/FileSystemTestingDemo.o" "../src/TestingDemos/FileSystemTestingDemo.c"
+Finished building: ../src/TestingDemos/FileSystemTestingDemo.c
+ 
+Building file: ../src/TestingDemos/MainTest.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MainTest.d" -MT"src/TestingDemos/MainTest.d" -c -o "src/TestingDemos/MainTest.o" "../src/TestingDemos/MainTest.c"
+Finished building: ../src/TestingDemos/MainTest.c
+ 
+Building file: ../src/TestingDemos/MaintenanceTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/MaintenanceTestingDemo.d" -MT"src/TestingDemos/MaintenanceTestingDemo.d" -c -o "src/TestingDemos/MaintenanceTestingDemo.o" "../src/TestingDemos/MaintenanceTestingDemo.c"
+Finished building: ../src/TestingDemos/MaintenanceTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TelemetryTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TelemetryTestingDemo.d" -MT"src/TestingDemos/TelemetryTestingDemo.d" -c -o "src/TestingDemos/TelemetryTestingDemo.o" "../src/TestingDemos/TelemetryTestingDemo.c"
+Finished building: ../src/TestingDemos/TelemetryTestingDemo.c
+ 
+Building file: ../src/TestingDemos/TrxvuTestingDemo.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TestingDemos/TrxvuTestingDemo.d" -MT"src/TestingDemos/TrxvuTestingDemo.d" -c -o "src/TestingDemos/TrxvuTestingDemo.o" "../src/TestingDemos/TrxvuTestingDemo.c"
+Finished building: ../src/TestingDemos/TrxvuTestingDemo.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPS.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPS.d" -MT"src/SubSystemModules/PowerManagment/EPS.d" -c -o "src/SubSystemModules/PowerManagment/EPS.o" "../src/SubSystemModules/PowerManagment/EPS.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPS.c
+ 
+Building file: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -MT"src/SubSystemModules/PowerManagment/EPSOperationModes.d" -c -o "src/SubSystemModules/PowerManagment/EPSOperationModes.o" "../src/SubSystemModules/PowerManagment/EPSOperationModes.c"
+Finished building: ../src/SubSystemModules/PowerManagment/EPSOperationModes.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/Maintenance.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/Maintenance.d" -MT"src/SubSystemModules/Maintenance/Maintenance.d" -c -o "src/SubSystemModules/Maintenance/Maintenance.o" "../src/SubSystemModules/Maintenance/Maintenance.c"
+Finished building: ../src/SubSystemModules/Maintenance/Maintenance.c
+ 
+Building file: ../src/SubSystemModules/Maintenance/SatMacros.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Maintenance/SatMacros.d" -MT"src/SubSystemModules/Maintenance/SatMacros.d" -c -o "src/SubSystemModules/Maintenance/SatMacros.o" "../src/SubSystemModules/Maintenance/SatMacros.c"
+Finished building: ../src/SubSystemModules/Maintenance/SatMacros.c
+ 
+Building file: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Housekepping/TelemetryCollector.d" -MT"src/SubSystemModules/Housekepping/TelemetryCollector.d" -c -o "src/SubSystemModules/Housekepping/TelemetryCollector.o" "../src/SubSystemModules/Housekepping/TelemetryCollector.c"
+Finished building: ../src/SubSystemModules/Housekepping/TelemetryCollector.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -MT"src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.d" -c -o "src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o" "../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c"
+Finished building: ../src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.c
+ 
+Building file: ../src/SubSystemModules/Communication/AckHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/AckHandler.d" -MT"src/SubSystemModules/Communication/AckHandler.d" -c -o "src/SubSystemModules/Communication/AckHandler.o" "../src/SubSystemModules/Communication/AckHandler.c"
+Finished building: ../src/SubSystemModules/Communication/AckHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/ActUponCommand.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/ActUponCommand.d" -MT"src/SubSystemModules/Communication/ActUponCommand.d" -c -o "src/SubSystemModules/Communication/ActUponCommand.o" "../src/SubSystemModules/Communication/ActUponCommand.c"
+Finished building: ../src/SubSystemModules/Communication/ActUponCommand.c
+ 
+Building file: ../src/SubSystemModules/Communication/Beacon.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/Beacon.d" -MT"src/SubSystemModules/Communication/Beacon.d" -c -o "src/SubSystemModules/Communication/Beacon.o" "../src/SubSystemModules/Communication/Beacon.c"
+Finished building: ../src/SubSystemModules/Communication/Beacon.c
+ 
+Building file: ../src/SubSystemModules/Communication/CommandDictionary.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/CommandDictionary.d" -MT"src/SubSystemModules/Communication/CommandDictionary.d" -c -o "src/SubSystemModules/Communication/CommandDictionary.o" "../src/SubSystemModules/Communication/CommandDictionary.c"
+Finished building: ../src/SubSystemModules/Communication/CommandDictionary.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatCommandHandler.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatCommandHandler.d" -MT"src/SubSystemModules/Communication/SatCommandHandler.d" -c -o "src/SubSystemModules/Communication/SatCommandHandler.o" "../src/SubSystemModules/Communication/SatCommandHandler.c"
+Finished building: ../src/SubSystemModules/Communication/SatCommandHandler.c
+ 
+Building file: ../src/SubSystemModules/Communication/SatDataTx.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/SatDataTx.d" -MT"src/SubSystemModules/Communication/SatDataTx.d" -c -o "src/SubSystemModules/Communication/SatDataTx.o" "../src/SubSystemModules/Communication/SatDataTx.c"
+Finished building: ../src/SubSystemModules/Communication/SatDataTx.c
+ 
+Building file: ../src/SubSystemModules/Communication/TRXVU.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/SubSystemModules/Communication/TRXVU.d" -MT"src/SubSystemModules/Communication/TRXVU.d" -c -o "src/SubSystemModules/Communication/TRXVU.o" "../src/SubSystemModules/Communication/TRXVU.c"
+../src/SubSystemModules/Communication/TRXVU.c: In function 'getTelemetryMetaData':
+../src/SubSystemModules/Communication/TRXVU.c:174:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/SubSystemModules/Communication/TRXVU.c: In function 'DumpTask':
+../src/SubSystemModules/Communication/TRXVU.c:205:2: warning: pointer targets in passing argument 3 of 'getTelemetryMetaData' differ in signedness [-Wpointer-sign]
+../src/SubSystemModules/Communication/TRXVU.c:168:5: note: expected 'int *' but argument is of type 'unsigned int *'
+Finished building: ../src/SubSystemModules/Communication/TRXVU.c
+ 
+Building file: ../src/InitSystem.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/InitSystem.d" -MT"src/InitSystem.d" -c -o "src/InitSystem.o" "../src/InitSystem.c"
+Finished building: ../src/InitSystem.c
+ 
+Building file: ../src/TLM_management.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/TLM_management.d" -MT"src/TLM_management.d" -c -o "src/TLM_management.o" "../src/TLM_management.c"
+../src/TLM_management.c: In function 'c_fileGetSizeOfElement':
+../src/TLM_management.c:316:7: warning: unused variable 'curr_file_name' [-Wunused-variable]
+Finished building: ../src/TLM_management.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -Dsdram -Dat91sam9g20 -DTRACE_LEVEL=5 -DDEBUG=1 -D'BASE_REVISION_NUMBER=' -D'BASE_REVISION_HASH_SHORT=' -D'BASE_REVISION_HASH=' -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/include" -I"C:\ISIS\workspace\SecretGlobusSatProject\GlobusSatProject\src" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/include" -I"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/include" -MMD -MP -MF"src/main.d" -MT"src/main.d" -c -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: GlobusSatProject.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=arm926ej-s -std=c99 -O0 -fmessage-length=0 -ffunction-sections -Wall -Wextra  -g -std=c99 -T C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/linker-scripts/sdram.lds -nostartfiles -Xlinker --gc-sections -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/at91/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//satellite-subsystems/satellite-subsystems/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hcc/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/freertos/lib" -L"C:/ISIS/workspace/SecretGlobusSatProject/GlobusSatProject/..//hal/hal/lib" -Wl,-Map,"GlobusSatProject.map" --specs=nano.specs -lc -u _printf_float -u _scanf_float -o "GlobusSatProject.elf"  ./src/TestingDemos/CommandsTestingDemo.o ./src/TestingDemos/EpsTestingDemo.o ./src/TestingDemos/FileSystemTestingDemo.o ./src/TestingDemos/MainTest.o ./src/TestingDemos/MaintenanceTestingDemo.o ./src/TestingDemos/TelemetryTestingDemo.o ./src/TestingDemos/TrxvuTestingDemo.o  ./src/SubSystemModules/PowerManagment/EPS.o ./src/SubSystemModules/PowerManagment/EPSOperationModes.o  ./src/SubSystemModules/Maintenance/Maintenance.o ./src/SubSystemModules/Maintenance/SatMacros.o  ./src/SubSystemModules/Housekepping/TelemetryCollector.o  ./src/SubSystemModules/Communication/SubsystemCommands/EPS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/FS_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Freertos_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/Maintanence_Commands.o ./src/SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.o  ./src/SubSystemModules/Communication/AckHandler.o ./src/SubSystemModules/Communication/ActUponCommand.o ./src/SubSystemModules/Communication/Beacon.o ./src/SubSystemModules/Communication/CommandDictionary.o ./src/SubSystemModules/Communication/SatCommandHandler.o ./src/SubSystemModules/Communication/SatDataTx.o ./src/SubSystemModules/Communication/TRXVU.o  ./src/InitSystem.o ./src/TLM_management.o ./src/main.o   -lHALD -lHCCD -lSatelliteSubsystemsD -lFreeRTOSD -lAt91D
+Finished building target: GlobusSatProject.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O binary "GlobusSatProject.elf"  "GlobusSatProject.bin"
+Finished building: GlobusSatProject.bin
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 
+23:08:11 **** Incremental Build of configuration Debug for project Hoopoe3 ****
+make -r all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Hoopoe3.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 253492	     12	 367408	 620912	  97970	Hoopoe3.elf
+Finished building: Hoopoe3.siz
+ 
+23:08:12 **** Incremental Build of configuration Debug for project hal-demo ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "hal-demo.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 321912	     12	 442924	 764848	  babb0	hal-demo.elf
+Finished building: hal-demo.siz
+ 
+23:08:26 **** Incremental Build of configuration Debug for project GlobusSatProject ****
+make -r -k all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GlobusSatProject.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 203536	     12	 303012	 506560	  7bac0	GlobusSatProject.elf
+Finished building: GlobusSatProject.siz
+ 

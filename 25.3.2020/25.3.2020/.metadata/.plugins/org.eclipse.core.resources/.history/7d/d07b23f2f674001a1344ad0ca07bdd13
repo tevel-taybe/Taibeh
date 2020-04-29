@@ -1,0 +1,339 @@
+#include <freertos/FreeRTOS.h>
+#include <freertos/semphr.h>
+#include <freertos/task.h>
+
+
+#include <hal/Timing/Time.h>
+#include <hal/errors.h>
+
+
+#include <satellite-subsystems/IsisTRXVU.h>
+
+
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "GlobalStandards.h"
+#include "TRXVU.h"
+#include "AckHandler.h"
+#include "ActUponCommand.h"
+#include "SatCommandHandler.h"
+#include "TLM_management.h"
+
+#include "SubSystemModules/PowerManagment/EPS.h"
+#include "SubSystemModules/Maintenance/Maintenance.h"
+#include "SubSystemModules/Housekepping/TelemetryCollector.h"
+#ifdef TESTING_TRXVU_FRAME_LENGTH
+#include <hal/Utility/util.h>
+#endif
+#define SIZE_RXFRAME        200
+#define SIZE_TXFRAME        235
+
+
+int x = 0;
+Boolean                 g_mute_flag = MUTE_OFF;                                // mute flag - is the mute enabled
+time_unix                 g_mute_end_time = 0;                                // time at which the mute will end
+time_unix                 g_prev_beacon_time = 0;                                // the time at which the previous beacon occured
+time_unix                 g_beacon_interval_time = 0;                        // seconds between each beacon
+unsigned char        g_current_beacon_period = 0;                // marks the current beacon cycle(how many were transmitted before change in baud)
+unsigned char         g_beacon_change_baud_period = 0;        // every 'g_beacon_change_baud_period' beacon will be in 1200Bps and not 9600Bps
+sat_packet_t n = {0};
+
+xQueueHandle xDumpQueue = NULL;
+xSemaphoreHandle xDumpLock = NULL;
+xTaskHandle xDumpHandle = NULL;                         //task handle for dump task
+xSemaphoreHandle xIsTransmitting = NULL; // mutex on transmission.
+
+
+void InitSemaphores()//to do (semaphore)
+{
+        //to do...............
+}
+
+
+
+
+int InitTrxvu()// done.
+{
+    	// Reading the default value
+		FRAM_read(&g_beacon_interval_time, BEACON_INTERVAL_TIME_ADDR, BEACON_INTERVAL_TIME_SIZE);
+
+        unsigned int d = 0;
+        ISIStrxvuI2CAddress y = {0}; //y is TRXVUI2CADRESS struct that goes to the function.
+        y.addressVu_tc = I2C_TRXVU_TC_ADDR;
+        y.addressVu_rc = I2C_TRXVU_RC_ADDR;
+
+		IsisTrxvu_tcSetAx25Bitrate(I2C_TRXVU_TC_ADDR, trxvu_bitrate_9600); //ax25, dont know if working, delete if need
+
+        ISIStrxvuFrameLengths x = {0};
+        x.maxAX25frameLengthRX = 200; //x struct goes to ISIS func
+        x.maxAX25frameLengthTX = 235;
+
+
+        ISIStrxvuBitrate z = trxvu_bitratestatus_9600;
+        d = IsisTrxvu_initialize(&y, &x, &z, 1);
+        Sleep(100);  //Sleep for 100ms.
+        
+        if(d == E_NO_SS_ERR) //if theres an error, return 0(the error code of the func, else return the func output;
+        {
+                return 0;
+        }
+        else
+        {
+                return d;
+        }
+        
+
+
+}
+
+
+
+int TRX_Logic()//to do last
+{
+	if(GetNumberOfFramesInBuffer() > 0) //if theres more than 0 cmd that waiting for execute
+	{
+			sat_packet_t cmd = {0};
+
+			int err = GetOnlineCommand(&cmd); //getting the command
+
+			ResetGroundCommWDT(); //reseting the WDT
+			SendAckPacket(ACK_RECEIVE_COMM,&cmd,NULL,0);
+
+			ActUponCommand(&cmd); //acting upon the cmd.
+
+	}
+	else if (GetDelayedCommandBufferCount() > 0) //else if theres more than 0 delayed cmd that waiting for execute
+	{
+
+			for(int i = 0; i < GetDelayedCommandBufferCount(); i++) //checking all the delayed command if one should be executable now
+			{
+
+				sat_packet_t cmd = {0};
+
+				int err = GetDelayedCommand(&cmd);
+				Boolean inTime = FALSE;
+
+				isDelayedCommandDue(1,&inTime); //if the command in time acting upon it
+
+				if(inTime)
+				{
+
+					ActUponCommand(&cmd);
+
+				}
+			}
+
+	}
+	return 0;
+
+}
+
+
+int GetNumberOfFramesInBuffer() //done.
+{
+        short int x = 0;
+        int y = 0;
+        y = IsisTrxvu_rcGetFrameCount(I2C_TRXVU_RC_ADDR, &x);
+        return y;
+}
+
+
+Boolean CheckTransmitionAllowed() //done
+{
+
+	if(g_mute_flag == FALSE)
+	{
+		return FALSE;
+	}
+	else
+	{
+		return TRUE;
+	}
+}
+
+
+
+
+void FinishDump(dump_arguments_t *task_args,unsigned char *buffer, ack_subtype_t acktype,
+                unsigned char *err, unsigned int size) //to do
+{
+
+}
+
+
+void AbortDump()//done
+{
+	vTaskDelete(xDumpHandle);
+}
+
+
+void SendDumpAbortRequest() //done(i think)...
+{
+	vTaskDelete(xDumpHandle);
+}
+
+
+Boolean CheckDumpAbort() //not working
+{
+        return FALSE;
+}
+
+
+void DumpTask(void *args) //not working
+{
+}
+
+
+int DumpTelemetry(sat_packet_t *cmd) //not working
+{
+
+    return 0;
+}
+
+
+//Sets the bitrate to 1200 every third beacon and to 9600 otherwise
+int BeaconSetBitrate() //done. (no need)
+{
+    return 0;
+}
+
+
+void BeaconLogic() //done.
+{
+	int i = 0;
+	unsigned int curr = 0;
+	sat_packet_t p;
+	if(TRUE == GetMuteFlag()) //if flag says its muted mute the TRXVU transmitter.
+	{
+		//pass.
+	}
+
+	else //if the flag is FALSE means we CAN send beacon
+	{
+		Time_getUnixEpoch(curr); //getting the current time.
+		if(curr - g_prev_beacon_time >= g_beacon_interval_time) //if it's the time to send beacon
+		{
+			p.cmd_type = telemetry_cmd_type; //getting the packet read
+			p.cmd_subtype = aa;
+			i = BeaconSetBitrate(); //setting the bitrate.
+			TransmitSplPacket(&p, NULL); //sending the beacon.
+		}
+	}
+}
+
+
+int muteTRXVU(time_unix duration) //done
+{
+
+		g_mute_end_time = duration;
+		g_mute_flag = MUTE_ON;
+
+    if(g_mute_flag == MUTE_ON)
+    {
+    	return 0;
+    }
+    else
+    {
+    	return -1;
+    }
+}
+
+
+void UnMuteTRXVU() //done
+{
+	g_mute_flag = MUTE_OFF;
+}
+
+
+Boolean GetMuteFlag() //done
+{
+        return g_mute_flag;
+}
+
+
+Boolean CheckForMuteEnd() //done
+{
+	time_unix curr_time =0;
+	Time_getUnixEpoch(&curr_time);
+
+	if(g_mute_end_time < curr_time)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+
+int GetTrxvuBitrate(ISIStrxvuBitrateStatus *bitrate) //done
+{
+	// Error
+	if(SIZE_TXFRAME <= 0)
+	{
+		return E_BITRATE_INPUT_ERROR;
+	}
+
+	*bitrate =  trxvu_bitratestatus_9600; // Setting the bitrate to 9600. The only bitrate we're using.
+
+    return SIZE_TXFRAME;
+
+}
+
+
+int TransmitDataAsSPL_Packet(sat_packet_t *cmd, unsigned char *data,
+                unsigned int length) //to do...
+{
+	for(unsigned int i = 0; i < length && i < MAX_COMMAND_DATA_LENGTH; i++)
+	{
+		cmd->data[i] = *(data + i);
+	}
+
+	if(length < MAX_COMMAND_DATA_LENGTH)
+	{
+		cmd->data[length] = '\0';
+	}
+	else
+	{
+		cmd->data[MAX_COMMAND_DATA_LENGTH - 1] = '\0';
+	}
+	cmd->length = length;
+	int i = TransmitSplPacket(cmd, NULL); //sending the packet and null(in progress).
+    return i;
+}
+
+
+int TransmitSplPacket(sat_packet_t *packet, int *avalFrames) //done.
+{
+	    int i = IsisTrxvu_tcSetAx25BeaconDefClSign(ISIS_TRXVU_I2C_BUS_INDEX, packet->data, packet->length, BEACON_INTERVAL_TIME_ADDR);
+
+	    if(NULL != avalFrames)
+	    {
+	    	IsisTrxvu_rcGetFrameCount(ISIS_TRXVU_I2C_BUS_INDEX, avalFrames);
+	    }
+
+        return i;
+}
+
+
+int UpdateBeaconBaudCycle(unsigned char cycle) //done.
+{
+	g_beacon_change_baud_period = cycle;
+    return 0;
+}
+
+
+
+int UpdateBeaconInterval(time_unix intrvl) //done
+{
+	g_beacon_interval_time = intrvl;
+
+	if(g_beacon_interval_time != intrvl)
+	{
+		return -1;
+	}
+
+    return 0;
+}
+

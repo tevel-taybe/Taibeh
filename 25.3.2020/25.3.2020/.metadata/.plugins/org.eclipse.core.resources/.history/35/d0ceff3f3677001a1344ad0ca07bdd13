@@ -1,0 +1,403 @@
+#include <freertos/FreeRTOS.h>
+#include <freertos/semphr.h>
+#include <freertos/task.h>
+
+#include <hal/Timing/Time.h>
+#include <hal/errors.h>
+
+#include <satellite-subsystems/IsisTRXVU.h>
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "GlobalStandards.h"
+#include "TRXVU.h"
+#include "Utility.h"
+#include "AckHandler.h"
+#include "ActUponCommand.h"
+#include "SatCommandHandler.h"
+#include "TLM_management.h"
+
+#include "SubSystemModules/PowerManagment/EPS.h"
+#include "SubSystemModules/Maintenance/Maintenance.h"
+#include "SubSystemModules/Housekepping/TelemetryCollector.h"
+#ifdef TESTING_TRXVU_FRAME_LENGTH
+#include <hal/Utility/util.h>
+#endif
+#define SIZE_RXFRAME	200
+#define SIZE_TXFRAME	235
+
+Boolean			transmitionFlag = FALSE;					//added to check transmition
+Boolean 		g_mute_flag = MUTE_OFF;				// mute flag - is the mute enabled
+time_unix 		g_mute_end_time = 0;				// time at which the mute will end
+time_unix 		g_prev_beacon_time = 0;				// the time at which the previous beacon occured
+time_unix 		g_beacon_interval_time = 0;			// seconds between each beacon
+unsigned char	g_current_beacon_period = 0;		// marks the current beacon cycle(how many were transmitted before change in baud)
+unsigned char 	g_beacon_change_baud_period = 0;	// every 'g_beacon_change_baud_period' beacon will be in 1200Bps and not 9600Bps
+
+xQueueHandle xDumpQueue = NULL;
+xSemaphoreHandle xDumpLock = NULL;
+xTaskHandle xDumpHandle = NULL;			 //task handle for dump task
+xSemaphoreHandle xIsTransmitting = NULL; // mutex on transmission.
+
+ISIStrxvuBitrateStatus g_trxvuBitrate = trxvu_bitrate_9600;
+
+void InitSemaphores()
+{
+	// Initialize the dump-lock semaphore.
+	// This semaphore should be taken whenever a
+	// dump is being sent.
+	xDumpLock = xSemaphoreCreateMutex();
+
+	// Initialize the transmission semaphore.
+	// This semaphore should be taken whenever something
+	// is attempting to transmit a message.
+	xIsTransmitting = xSemaphoreCreateMutex();
+}
+
+int InitTrxvu()
+{
+	xDumpQueue = xQueueCreate( 10, sizeof( sat_packet_t ) );
+
+	ISIStrxvuI2CAddress address = {
+			// Receiver
+			I2C_TRXVU_RC_ADDR,
+
+			// Transmitter
+			I2C_TRXVU_TC_ADDR
+	};
+
+	ISIStrxvuFrameLengths frameLengths = {
+			SIZE_TXFRAME,
+			SIZE_RXFRAME
+	};
+
+	// TODO: Investigate whether we want to use the 9600 bitrate or
+	// a different one. (ISIStrxvuBitrate enumeration)
+	// TODO: Assure correct usage of fourth parameter.
+	int error = IsisTrxvu_initialize(&address, &frameLengths, &g_trxvuBitrate, 1);
+
+	if (error != E_NO_SS_ERR)
+		printf("[!] Failed to initialize TRXVU. Function returned with error code %d.", error);
+	else
+		printf("[+] Successfully initialized the TRXVU.");
+
+	return error;
+}
+
+int TRX_Logic()
+{
+/*
+	sat_packet_t packet;
+	packet.ID = 1;
+	packet.cmd_type = 2;
+	packet.cmd_subtype = 3;
+	packet.data[0] = 4;
+	packet.data[1] = 5;
+	packet.data[2] = 6;
+	packet.data[3] = 7;
+	packet.data[4] = 8;
+	packet.length = 5;
+	int avalFrames;
+	int err = TransmitSplPacket(&packet, &avalFrames);
+
+		printf("err of TransmitSplPacket: %d\n", err);
+*/
+
+	int error = 0;
+	sat_packet_t packet = {};
+
+	// Zero out the struct in case we have
+	// junk memory that won't be overriden
+	// by the driver (since we have no idea
+	// on how it operates).
+	memset(&packet, 0, sizeof(sat_packet_t));
+
+	int frameCount = GetNumberOfFramesInBuffer();
+	if (frameCount > 0)
+	{
+		error = GetOnlineCommand(&packet);
+
+		ResetGroundCommWDT();
+		SendAnonymosAck(ACK_RECEIVE_COMM);
+	}
+	else
+	{
+		frameCount = GetDelayedCommandBufferCount();
+
+		if (frameCount > 0)
+		{
+			error = GetDelayedCommand(&packet);
+		}
+	}
+
+	// Defined as an error code for when we have successfully found the command.
+	// See SatPacketHandler.h
+	if (error == command_found)
+		error = ActUponCommand(&packet);
+
+	// Perform beacon operations
+	BeaconLogic();
+
+	return error;
+}
+
+int GetNumberOfFramesInBuffer()
+{
+	unsigned short frameCount = 0;
+	int error;
+
+	error = IsisTrxvu_rcGetFrameCount(0, &frameCount);
+	if (error != E_NO_SS_ERR)
+	{
+		printf("[!] Failed to collect receiver frame count! (%d)", error);
+		return 0;
+	}
+
+	return frameCount;
+}
+
+Boolean CheckTransmitionAllowed()
+{
+	// The following conditions are under which we should return false:
+	// 1) The transmission mutex is active (xIsTransmitting).
+	// 2) The EPS has an active low voltage flag.
+	// 3) The mute flag is currently on (use GetMuteFlag()).
+	// 4) The battery voltage is below CRUISE_DOWN.
+	// 5) Less than 30 minutes have passed since the satellite has been deployed.
+
+/*	if (xSemaphoreTake(xIsTransmitting, 0) == pdTRUE)
+	{
+		xSemaphoreGive(xIsTransmitting);
+	}
+	else
+	{
+		return FALSE;
+	}
+*/
+
+	// TODO fix work with flags
+
+	if (EpsGetLowVoltageFlag() == TRUE)
+		return FALSE;
+
+	// TODO fix the 30 minute function
+	//if (timeFromStartSat() < 30*60)
+	//	return FALSE;
+
+	if (GetMuteFlag() == MUTE_ON)
+		return FALSE;
+
+	if (GetSystemState() > CruiseMode)
+		return FALSE;
+
+	if (!transmitionFlag)
+		return FALSE;
+
+	return TRUE;
+}
+
+
+void FinishDump(dump_arguments_t *task_args,unsigned char *buffer, ack_subtype_t acktype,
+		unsigned char *err, unsigned int size)
+{
+}
+
+void AbortDump() //TODO: check
+{
+	vTaskDelete( xDumpHandle );
+}
+
+void SendDumpAbortRequest() //what to do?
+{
+}
+
+void DumpTask(void *args)
+{
+
+}
+
+int DumpTelemetry(sat_packet_t *cmd) //TODO: check
+{
+	if( xSemaphoreTake( xDumpLock, 10 ) == pdTRUE )
+	{
+		xQueueSendToBack(xDumpQueue, cmd, 0);
+
+		xSemaphoreGive( xDumpLock );
+	}
+
+	return 0;
+}
+
+
+//Sets the bitrate to 1200 every third beacon and to 9600 otherwise
+int BeaconSetBitrate()
+{
+/*	if (g_current_beacon_period >= 3)
+	{
+		g_trxvuBitrate = trxvu_bitrate_1200;
+	}
+	else
+	{
+		g_trxvuBitrate = trxvu_bitrate_9600;
+	}
+
+	int error = IsisTrxvu_tcSetAx25Bitrate(g_trxvuBitrate);
+	if (error != E_NO_SS_ERR)
+		printf("[!] Failed to set beacon bitrate: received error code %d.", error);
+
+	return error;*/
+	printf("[!] Called deprecated function BeaconSetBitrate.");
+	return -1;
+}
+
+void BeaconLogic()
+{
+//	Boolean CheckTransmitionAllowed();
+//	int TransmitSplPacket(sat_packet_t *packet, int *avalFrames);
+
+	if (CheckTransmitionAllowed() && ShouldTransmitBeacon())
+	{
+		sat_packet_t packet;
+		packet.ID = 1;
+		packet.cmd_subtype = 1;
+		packet.cmd_type = 1;
+
+		int err;
+
+		//time
+		unsigned int time;
+		err = Time_getUnixEpoch(&time);
+		if (err == 1)
+		{
+			time = NULL;
+		}
+
+		//bat_volt
+		voltage_t vbatt;
+		err = GetBatteryVoltage(&vbatt);
+		if (err != E_NO_SS_ERR)
+			vbatt = 0;
+
+		//board temp
+		unsigned char index;
+		ISIStrxvuTxTelemetry telemetry;
+
+		err = IsisTrxvu_tcGetTelemetryAll(index, &telemetry);
+		unsigned short board_temp = telemetry.fields.board_temp;
+
+//		what is working
+
+
+		char buf[200];
+		sprintf (buf, "%s%u%u%u" ,"T7ADM", time, vbatt, board_temp);
+		strncpy(packet.data,buf,200);
+		//MAX_COMMAND_DATA_LENGTH 200
+		packet.length = 5+4+2+2;
+
+		int avalFrames;
+		err = TransmitSplPacket(&packet, &avalFrames);
+
+	}
+
+}
+
+int MuteTRXVU(time_unix duration)
+{
+	g_mute_end_time = GetUnixTime() + duration;
+	g_mute_flag = MUTE_ON;
+
+	return 0;
+}
+
+void UnMuteTRXVU()
+{
+	g_mute_end_time = 0;
+	g_mute_flag = MUTE_OFF;
+}
+
+Boolean GetMuteFlag()
+{
+	if (CheckForMuteEnd())
+	{
+		UnMuteTRXVU();
+	}
+
+	if (g_mute_flag == MUTE_ON)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+Boolean CheckForMuteEnd()
+{
+	if (GetUnixTime() > g_mute_end_time)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+int GetTrxvuBitrate(ISIStrxvuBitrateStatus *bitrate)
+{
+	*bitrate = g_trxvuBitrate;
+	return E_NO_SS_ERR;
+}
+
+int TransmitDataAsSPL_Packet(sat_packet_t *cmd, unsigned char *data,
+		unsigned int length)
+{
+	return 0;
+}
+
+
+int TransmitSplPacket(sat_packet_t *packet, int *avalFrames)
+{
+
+	if(CheckTransmitionAllowed())
+	{
+		transmitionFlag = TRUE;
+
+		int error = IsisTrxvu_tcSendAX25DefClSign(ISIS_TRXVU_I2C_BUS_INDEX,packet,packet->length+4+4+1+1 ,avalFrames);
+
+		transmitionFlag = FALSE;
+		return error;
+	}
+
+	else
+		return E_OUTPUT_MODE_ERROR;
+
+
+
+	/*
+	if (xSemaphoreTake(xIsTransmitting, (portTickType) 10) == pdTRUE)
+	{
+		//TODO check
+		int error = IsisTrxvu_tcSendAX25DefClSign(ISIS_TRXVU_I2C_BUS_INDEX, packet->data, packet->length, avalFrames);
+
+		xSemaphoreGive(xIsTransmitting);
+		return error;
+	}
+	return E_GET_SEMAPHORE_FAILED;
+	*/
+
+}
+
+
+int UpdateBeaconBaudCycle(unsigned char cycle)
+{
+	g_current_beacon_period = cycle;
+
+	return 0;
+}
+
+int UpdateBeaconInterval(time_unix intrvl)
+{
+	g_beacon_interval_time = intrvl;
+
+	return 0;
+}
