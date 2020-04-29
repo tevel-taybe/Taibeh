@@ -34,7 +34,7 @@ void taskMain()
 	WDT_startWatchdogKickTask(10 / portTICK_RATE_MS, FALSE);
 
 	InitSubsystems();
-	printf("Init subsystem operation done"); //TODO: Delete this example line
+
 
 	while(TRUE)
 	{
