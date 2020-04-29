@@ -160,8 +160,6 @@ int eps_command_router(sat_packet_t *cmd)
 	return err;
 }
 
-
-
 int telemetry_command_router(sat_packet_t *cmd)
 {
 	//TODO: finish 'telemetry_command_router'
