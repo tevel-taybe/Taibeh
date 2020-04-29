@@ -243,7 +243,7 @@ int maintenance_command_router(sat_packet_t *cmd)
 	{
 	case GENERIC_I2C:
 		err= CMD_GenericI2C(cmd);
-////cmd_//generic from ..... maintenance
+
 		break;
 
 	default:

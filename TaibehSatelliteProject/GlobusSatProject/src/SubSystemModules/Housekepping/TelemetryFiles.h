@@ -4,7 +4,7 @@
 
 //	---general
 #define FILENAME_WOD_TLM				"wod"
-#define Operational_DATA_TLM			"OprData"
+#define FILENAME_Operational_DATA_TLM	"OprData"
 
 //	---eps
 #define	FILENAME_EPS_RAW_MB_TLM			"eRwMB"
@@ -34,6 +34,7 @@ typedef enum {
 	tlm_rx_revc,
 	tlm_rx_frame,
 	tlm_antenna,
+	tlm_operation_data,
 
 }tlm_type;
 #endif /* TELEMETRYFILES_H_ */

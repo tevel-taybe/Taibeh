@@ -13,21 +13,23 @@
 #include <satellite-subsystems/IsisAntS.h>
 #include <satellite-subsystems/IsisSolarPanelv2.h>
 #include <hal/Timing/Time.h>
-
 #include <string.h>
+#include <stdio.h>
 
+#include "hal/Drivers/I2C.h"
 #include "TelemetryCollector.h"
 #include "TelemetryFiles.h"
 #include "TLM_management.h"
 #include "SubSystemModules/Maintenance/Maintenance.h"
-#include <stdio.h>
+
 
 typedef enum{
 	eps_tlm,
 	trxvu_tlm,
 	ant_tlm,
 	solar_panel_tlm,
-	wod_tlm
+	wod_tlm,
+	operational_data_tlm
 }subsystem_tlm;
 
 time_unix tlm_save_periods[NUM_OF_SUBSYSTEMS_SAVE_FUNCTIONS] = {0};
@@ -44,6 +46,9 @@ int GetTelemetryFilenameByType(tlm_type tlm_type, char filename[MAX_F_FILE_NAME_
 		break;
 	case tlm_eps_raw_mb:
 		strcpy(filename,FILENAME_EPS_RAW_MB_TLM);
+		break;
+	case tlm_operation_data:
+		strcpy(filename,FILENAME_Operational_DATA_TLM);
 		break;
 	case tlm_eps_eng_mb:
 		strcpy(filename,FILENAME_EPS_ENG_MB_TLM);
@@ -133,11 +138,21 @@ void TelemetryCollectorLogic()
 		TelemetrySaveWOD();
 		if (Time_getUnixEpoch(&curr) == 0)
 		{
-			tlm_last_save_time[solar_panel_tlm] = curr;
+			tlm_last_save_time[wod_tlm] = curr;
 		}
 
 		 //TODO need to add to the log file an error message
 	}
+	if (CheckExecutionTime(tlm_last_save_time[operational_data_tlm],tlm_save_periods[operational_data_tlm]))
+	{
+		TelemetrySaveWOD();
+		if (Time_getUnixEpoch(&curr) == 0)
+		{
+			tlm_last_save_time[operational_data_tlm] = curr;
+		}
+
+			 //TODO need to add to the log file an error message
+		}
 
 }
 
@@ -340,14 +355,15 @@ void CMD_Get_General_Telemetry()
 	isis_eps__gethousekeepingengincdb__from_t hk_tlm_cdb = {0};
 	uint8_t status;
 	OperationalData_t data= { 0 };
-	// GetCurrentOperational_datat_Telemetry(&data); TODO: check with Mohammad
+	// GetCurrentOperational_datat_Telemetry(&data);
+	//TODO: check with Mohammad:
 	//an option to make all the below function in one function
 	for(IsisSolarPanelv2_Panel_t panel =ISIS_SOLAR_PANEL_0; panel < ISIS_SOLAR_PANEL_6; ++panel)
 	{
 		err += IsisSolarPanelv2_getTemperature(  panel, &data.data[panel], &status );
 	}
-	err += isis_eps__gethousekeepingengincdb__tm(EPS_I2C_BUS_INDEX, &hk_tlm_cdb);//err =  IsisEPS_getEngHKDataCDB(EPS_I2C_BUS_INDEX, board, &hk_tlm_cdb, &cmd);
-	err += isis_eps__gethousekeepingeng__tm(EPS_I2C_BUS_INDEX, &hk_tlm);//err += IsisEPS_getRAEngHKDataMB(EPS_I2C_BUS_INDEX, &hk_tlm, &cmd);
+	err += isis_eps__gethousekeepingengincdb__tm(EPS_I2C_BUS_INDEX, &hk_tlm_cdb);
+	err += isis_eps__gethousekeepingeng__tm(EPS_I2C_BUS_INDEX, &hk_tlm);
 
 	if(err == 0)
 	{
@@ -363,7 +379,7 @@ void CMD_Get_General_Telemetry()
 	{
 		printf(" problem in creating Operational data***********************************************err=%d\n",err);
 	}
-	c_fileWrite(Operational_DATA_TLM, &data);
+	c_fileWrite(FILENAME_Operational_DATA_TLM, &data);
 }
 
 void TelemetrySaveWOD()
@@ -372,7 +388,7 @@ void TelemetrySaveWOD()
 	GetCurrentWODTelemetry(&wod);
 	c_fileWrite(FILENAME_WOD_TLM, &wod);
 }
-#include "hal/Drivers/I2C.h"
+
 void GetCurrentWODTelemetry(WOD_Telemetry_t *wod)
 {
 	if (NULL == wod){
