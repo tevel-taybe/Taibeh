@@ -356,7 +356,7 @@ void CMD_Get_General_Telemetry()
 	uint8_t status;
 	OperationalData_t data= { 0 };
 	// GetCurrentOperational_datat_Telemetry(&data);
-	//TODO: check with Mohammad:
+	//TODO:
 	//an option to make all the below function in one function
 	for(IsisSolarPanelv2_Panel_t panel =ISIS_SOLAR_PANEL_0; panel < ISIS_SOLAR_PANEL_6; ++panel)
 	{

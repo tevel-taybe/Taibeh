@@ -104,7 +104,7 @@ CommandHandlerErr TRX_Logic() {
 		{
 			unsigned int satID =  cmd.ID >> (sizeof(cmd.ID) - 1 ) * 8;
 
-			if (satID == TAIBEH ||  satID == 0 )
+			if (satID == TAIBEH( 54594203) ||  satID (54594200) == 0 )// 54 59 42 03
 			{
 				ResetGroundCommWDT();
 				SendAckPacket(ACK_RECEIVE_COMM, &cmd, NULL, 0);

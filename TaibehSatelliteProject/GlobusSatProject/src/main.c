@@ -38,10 +38,10 @@ void taskMain()
 
 	while(TRUE)
 	{
-		int err=EPS_Conditioning();
-		if (0!=err)
+		int err = EPS_Conditioning();
+		if (0 != err)
 		{
-		 // TO DO : print out need to be deleted
+			//TODO: log insteads
 		 printf("error in EPS_Conditioning Procedure. err= %d \n",err);
 		}
 

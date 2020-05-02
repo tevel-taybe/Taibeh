@@ -13,9 +13,11 @@
 
 #include "SubSystemModules/Communication/AckHandler.h"
 #include "SubSystemModules/Communication/TRXVU.h"
+#include "SubSystemModules/Communication/SubsystemCommands/TRXVU_Commands.h"
 #include "SubSystemModules/Communication/SatDataTx.h"
 #include "TLM_management.h"
 #include "Maintenance.h"
+
 
 Boolean CheckExecutionTime(time_unix prev_time, time_unix period)
 {
@@ -144,31 +146,48 @@ time_unix GetGsWdtKickTime()
 	return no_comm_thresh;
 }
 
-void Maintenance()
+static time_unix g_last_time_deplyCheck = 0;
+#define DEPLOY_ANTS_CHECK_PERIOD 1800
+
+void RedeployIfNeeded(time_unix curr_time)
 {
 
-		time_unix curr_time = 0;
+	if ( curr_time - g_last_time_deplyCheck > DEPLOY_ANTS_CHECK_PERIOD)
+	{
+		CMD_Re_Deploy_Ants(NULL);
+		g_last_time_deplyCheck = curr_time;
+	}
 
-		int  err = Time_getUnixEpoch(&curr_time);
+}
+
+void Maintenance()
+{
+	isis_eps__watchdog__from_t response;
+	(void)isis_eps__watchdog__tm( EPS_I2C_BUS_INDEX, &response );
+	(void)response;
+
+	time_unix curr_time = 0;
+	int  err = Time_getUnixEpoch(&curr_time);
+	RedeployIfNeeded(curr_time);
+	if (0!=err)
+	{
+	#ifdef TESTING
+		printf(" there is an error getting the updated time . error= %d \n ",err);
+	#endif
+	}
+	else
+	{
+		err= FRAM_write((unsigned char*)&curr_time,MOST_UPDATED_SAT_TIME_ADDR,MOST_UPDATED_SAT_TIME_SIZE);
 		if (0!=err)
 		{
-		#ifdef TESTING
-			printf(" there is an error getting the updated time . error= %d \n ",err);
+		# ifdef TESTING
+		printf("an error occured updating the time in the FRAM , Error = %d \n",err);//TODO: do error log file
 		#endif
 		}
-		else
-		{
-			err= FRAM_write((unsigned char*)&curr_time,MOST_UPDATED_SAT_TIME_ADDR,MOST_UPDATED_SAT_TIME_SIZE);
-			if (0!=err)
-			{
-			# ifdef TESTING
-			printf("an error occured updating the time in the FRAM , Error = %d \n",err);
-			#endif
-			}
-		}
+	}
 	// SaveSatTimeInFRAM(MOST_UPDATED_SAT_TIME_ADDR,MOST_UPDATED_SAT_TIME_SIZE);
-		///   redeploy procedure 1- if ant armed ? 2- if Ants deployed
-	//TODO: do error log file
+		///   Redeploys procedure 1- if ant armed ? 2- if Ants deployed
+
 	WakeupFromResetCMD();
 
 	if (IsFS_Corrupted()) {

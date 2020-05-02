@@ -316,7 +316,7 @@ int CMD_ArmDisArmAnt(sat_packet_t *cmd)//TODO: need to be completed
 	err= IsisAntS_setArmStatus(ISIS_TRXVU_I2C_BUS_INDEX, Req_Side,  Req_status);
 	if(0!= err)
 	{
-		printf("error in %s on side %s\n", (Req_Side==0x00)? "A":"B", (Req_status==0XAD) ? "Arm" :"Disarm");
+		printf("error in %s on side %s\n", (Req_status==0XAD) ? "Arm" :"Disarm",(Req_Side==0x00)? "A":"B");
 	}
 
 	return err;
