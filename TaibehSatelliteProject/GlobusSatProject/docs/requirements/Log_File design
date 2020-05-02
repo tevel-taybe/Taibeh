@@ -1,1 +1,4 @@
-
+* define the log stucture - see logger.h for initial structure 
+* logger name should be max 7 chars
+* check what includes should be in the logeer.h 
+* write the required function for it 
