@@ -41,7 +41,7 @@ void taskMain()
 		int err = EPS_Conditioning();
 		if (0 != err)
 		{
-			//TODO: log insteads
+			//TODO: log instead
 		 printf("error in EPS_Conditioning Procedure. err= %d \n",err);
 		}
 
