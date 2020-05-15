@@ -521,10 +521,85 @@ void DeInitializeFS( void )
 	printf("deinitializig file system end \n");
 
 }
+
+#include "Logger.h"
+
+
+static const char* ComponentNames[] = {
+		/*CNAME_EPS     */  "eps",
+		/*CNAME_TRXVU   */  "trx",
+		/*CNAME_ANTS    */  "ant",
+		/*CNAME_GENERAL    */  "gnr",
+		/*CNAME_SOLAR   */  "slr"
+};
+
+#define LOG_RECORDS_PER_FILE		10000
+#define LOG_MAX_FILES				10
+
+static int g_log_records_written = 0;
+static g_log_file_index = 0;
+static LogSeverity  g_log_level = LOG_ERROR;
+
+FileSystemResult logFileWrite(char* c_file_name, void* element)
+{
+	C_FILE c_file;
+	unsigned int addr;//FRAM ADDRESS
+	F_FILE *file;
+	char curr_file_name[MAX_F_FILE_NAME_SIZE+sizeof(int)*2];
+	unsigned int curr_time;
+	Time_getUnixEpoch(&curr_time);
+	if(get_C_FILE_struct(c_file_name,&c_file,&addr)!=TRUE)//get c_file
+	{
+		return FS_NOT_EXIST;
+	}
+
+	if(g_log_records_written == LOG_RECORDS_PER_FILE)
+	{
+		++g_log_file_index;
+		g_log_records_written=0;
+	}
+	if(g_log_file_index == LOG_MAX_FILES)
+	{
+		g_log_file_index = 0;
+	}
+	int index_current = g_log_file_index;
+	get_file_name_by_index(c_file_name,index_current,curr_file_name);
+	int error = f_enterFS();
+	(void)error;
+	//check_int("c_fileWrite, f_enterFS", error);
+	file = f_open(curr_file_name,"a+");
+	writewithEpochtime(file,element,c_file.size_of_element,curr_time);
+	c_file.last_time_modified= curr_time;
+	if(FRAM_write((unsigned char *)&c_file,addr,sizeof(C_FILE))!=0)//update last written
+	{
+		return FS_FRAM_FAIL;
+	}
+	++g_log_records_written;
+	f_close(file);
+	f_releaseFS();
+	return FS_SUCCSESS;
+}
+
+int wlog(ComponentName component, LogSeverity severity, int err, const char *discription)
+{
+	if(severity >= g_log_level)
+	{
+		LogFileRecord_t r;
+		strcpy(r.comp_name, ComponentNames[component]);
+		r.level=severity;
+		r.error=err;
+		strcpy(r.content,discription);
+
+	}
+	return 0;
+}
+
 typedef struct{
 	int a;
 	int b;
 }TestStruct ;
+
+
 /*void test_i()
 {
 

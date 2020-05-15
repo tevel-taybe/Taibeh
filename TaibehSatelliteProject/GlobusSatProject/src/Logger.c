@@ -2,6 +2,10 @@
 #include <freertos/semphr.h>
 #include <freertos/task.h>
 
+#include <hcc/api_mdriver_atmel_mcipdc.h>
+#include <hcc/api_hcc_mem.h>
+#include <hcc/api_fat.h>
+
 #include <hal/Timing/Time.h>
 
 #include "GlobalStandards.h"
@@ -16,9 +20,3 @@
 #include "SubSystemModules/Communication/SatDataTx.h"
 #include "TLM_management.h"
 #include "SubSystemModules/maintenance/Maintenance.h"
-#include "Logger.h"
-
-int wlog(int err, const char *discription, const char *componenet_name)
-{
-	return 0;
-}

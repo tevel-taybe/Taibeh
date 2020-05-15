@@ -98,28 +98,27 @@ CommandHandlerErr TRX_Logic() {
 	sat_packet_t cmd = { 0 };
 
 	if (frame_count > 0)
-	{
-		err = GetOnlineCommand(&cmd);
-		if (cmd_command_found == err)
 		{
-			// MSB is the id of sat
-			unsigned int satID =  cmd.ID >> (sizeof(cmd.ID) - 1 ) * 8;
-
-			if (satID == TAIBEH ||  satID  == 0 )// 54 59 42 03
+			err = GetOnlineCommand(&cmd);
+			if (cmd_command_found == err)
 			{
-				ResetGroundCommWDT();
-				SendAckPacket(ACK_RECEIVE_COMM, &cmd, NULL, 0);
-				err = ActUponCommand(&cmd);
+				// MSB is the id of sat
+				unsigned int satID =  cmd.ID >> (sizeof(cmd.ID) - 1 ) * 8;
+
+				if (satID == TAIBEH ||  satID  == 0 )// 54 59 42 03
+				{
+					ResetGroundCommWDT();
+					SendAckPacket(ACK_RECEIVE_COMM, &cmd, NULL, 0);
+					err = ActUponCommand(&cmd);
+				}
 			}
 		}
-	}
-	else if (GetDelayedCommandBufferCount() > 0)
-	{  // delayed command was removed from the scope
-		err = GetDelayedCommand(&cmd);
-	}
-
-	BeaconLogic();
-
+		else if (GetDelayedCommandBufferCount() > 0)
+		{  // delayed command was removed from the scope
+			err = GetDelayedCommand(&cmd);
+		}
+	    vTaskDelay(10);
+		BeaconLogic();
 	if (cmd_command_found != err)
 		return err;
 

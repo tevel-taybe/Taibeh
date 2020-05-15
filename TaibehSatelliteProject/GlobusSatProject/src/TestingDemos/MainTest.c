@@ -20,9 +20,11 @@
 
 #include "InitSystem.h"
 
+#include "Logger.h"
 
 Boolean selectAndExecuteTest()
 {
+	wlog(CNAME_EPS,LOG_INFO,4,"testing the log\n");
 	unsigned int selection = 0;
 	Boolean offerMoreTests = TRUE;
 
@@ -106,7 +108,6 @@ Boolean selectAndExecuteTest()
 
 void taskTesting()
 {
-	WDT_startWatchdogKickTask(10 / portTICK_RATE_MS, FALSE);
 
 
 	InitSubsystems();

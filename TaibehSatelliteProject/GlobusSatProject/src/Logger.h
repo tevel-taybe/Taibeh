@@ -22,13 +22,28 @@
 #define 		MAX_LOG_CONTENT			64
 #define 		MAX_LOG_COMPONENT_NAME 	16
 
+typedef enum LogSeverity {
+	LOG_INFO,
+	LOG_ERROR
+} LogSeverity;
+
 typedef struct LogFileRecord
 {
+	LogSeverity level;
+	time_unix time;
 	int error;
 	char content[MAX_LOG_CONTENT];
 	char comp_name[MAX_LOG_COMPONENT_NAME];
 
 } LogFileRecord_t;
+
+typedef enum ComponentName {
+	CNAME_EPS,
+	CNAME_TRXVU,
+	CNAME_ANTS,
+	CNAME_GENERAL,
+	CNAME_SOLAR
+} ComponentName;
 
 /*!
  * @brief writes to log file in case function returns an error
@@ -38,6 +53,6 @@ typedef struct LogFileRecord
  * @return	TRUE if success
  * 			FALSE otherwise
  */
-int wlog(int err, const char *discription, const char *componenet_name);
+int wlog(ComponentName component, LogSeverity severity, int err, const char *discription);
 
 #endif /* LOGGER_H_ */

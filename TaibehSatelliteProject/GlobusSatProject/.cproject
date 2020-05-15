@@ -66,6 +66,7 @@
 									<listOptionValue builtIn="false" value="'BASE_REVISION_NUMBER=$(REV)'"/>
 									<listOptionValue builtIn="false" value="'BASE_REVISION_HASH_SHORT=$(REVHASH_SHORT)'"/>
 									<listOptionValue builtIn="false" value="'BASE_REVISION_HASH=$(REVHASH)'"/>
+									<listOptionValue builtIn="false" value="small"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.asmlisting.121433134" name="Generate assembler listing (-Wa,-adhlns=&quot;$@.lst&quot;)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.asmlisting" value="false" valueType="boolean"/>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1441447076" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
@@ -197,6 +198,7 @@
 									<listOptionValue builtIn="false" value="__ASSEMBLY__"/>
 									<listOptionValue builtIn="false" value="sdram"/>
 									<listOptionValue builtIn="false" value="at91sam9g20"/>
+									<listOptionValue builtIn="false" value="small"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1139761694" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
 							</tool>
