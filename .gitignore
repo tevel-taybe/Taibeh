@@ -6,3 +6,5 @@ doxygen
 *.elf
 *.bin
 *.map
+*.siz
+
