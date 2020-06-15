@@ -2,7 +2,9 @@
 #ifndef SATDATATX_H_
 #define SATDATATX_H_
 
-#define MAX_MUTE_TIME 	(5400) 	///< max mute duration will be 90 minutes = 60 *90 [sec]
+#define MAX_MUTE_TIME 	3600 	///< max mute duration will be 60 minutes = 60 *60 [sec]
+#define MAX_IDLE_TIME 	600 	///< max IDLE duration will be 10 minutes = 10 *60 [sec]
+
 #define MUTE_ON 		TRUE	///< mute is on flag
 #define MUTE_OFF 		FALSE	///< mute is off flag
 

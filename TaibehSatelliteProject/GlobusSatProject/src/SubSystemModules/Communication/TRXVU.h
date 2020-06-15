@@ -7,6 +7,7 @@
 #include "AckHandler.h"
 #include "SatCommandHandler.h"
 
+
 #define SIZE_RXFRAME	200		///< max size of data field in uplink
 #define SIZE_TXFRAME	235		///< max size of data field in downlink
 #define NUM_OF_Available_Frames  255 //indication that the send buffer is full
@@ -18,6 +19,7 @@ typedef struct __attribute__ ((__packed__))
 	unsigned char dump_type;
 	time_unix t_start;
 	time_unix t_end;
+	unsigned short delog;
 } dump_arguments_t;
 
 

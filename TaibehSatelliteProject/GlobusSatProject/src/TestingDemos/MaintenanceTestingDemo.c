@@ -5,6 +5,7 @@
 #include "MaintenanceTestingDemo.h"
 #include "SubSystemModules/Maintenance/Maintenance.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <hal/Utility/util.h>
 #include <hal/Timing/Time.h>
 #include <hcc/api_fat.h>

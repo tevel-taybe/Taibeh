@@ -61,7 +61,7 @@
 typedef unsigned  int time_unix; 	///< in seconds   //// was chnged from long to int
 typedef unsigned char byte;
 
-typedef unsigned short voltage_t; 	///< in mV
+typedef unsigned  short voltage_t; 	///< in mV  // short = 2 bytes
 typedef unsigned short current_t; 	///< in mA
 typedef unsigned short power_t;		///< in mW
 typedef short temp_t;				///< in Celsius

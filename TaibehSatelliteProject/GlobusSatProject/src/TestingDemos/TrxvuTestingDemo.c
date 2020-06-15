@@ -480,8 +480,8 @@ Boolean SendRawHKDataMB() //siham
 	//ieps_statcmd_t p_rsp_code;
 
 	sat_packet_t cmd = {0};
-	eps_subtypes_t eps_Raw_subtype ;
-	int err = AssembleCommand((unsigned char*)&tlm_mb_raw,sizeof(tlm_mb_raw), eps_cmd_type, eps_Raw_subtype, 0x21344312,&cmd);
+	eps_subtypes_t eps_Raw_subtype;
+	int err = AssembleCommand((unsigned char*)&tlm_mb_raw,sizeof(tlm_mb_raw), eps_cmd_type, eps_Raw_subtype, 0x21344312, &cmd);
 	if(err!=0)
 		return FALSE;
 
@@ -518,7 +518,7 @@ Boolean SendRawHKDataMB() //siham
 
      if(!CheckTransmitionAllowed())
 		 return FALSE;
-      int err = IsisAntS_getAlltelemetry(0 ,ants_side , &tlm_return);
+      int err = IsisAntS_getAlltelemetry( ,ants_side , &tlm_return);
       if ( err != 0 )
     	  return FALSE ;
       sat_packet_t cmd = {0};
@@ -693,29 +693,16 @@ Boolean SendRawHKDataMB() //siham
 
   Boolean SendRawaHKDataCDB() //jana
   {
-  	if(!CheckTransmitionAllowed())
-  			return FALSE;
-  	//ieps_board_t board;
-  	//ieps_enghk_data_cdb_t p_rawhk_data_cdb;
-  	//ieps_statcmd_t p_rsp_code;
-  	isis_eps__gethousekeepingrawincdb__from_t response;
-
-  	/*!
-  	 *	Prepare the response buffer with housekeeping data. The housekeeping data is returned in raw form, as received from the hardware, unaltered by the main controller.
-  	 *
-  	 *	@param [out] Response received from subsystem.
-  	 * 	@return ISIS_EPS_ERR_t
-  	 */
-  	//int isis_eps__gethousekeepingrawincdb__tm( uint8_t index, isis_eps__gethousekeepingrawincdb__from_t *response );
-  	int err= isis_eps__gethousekeepingrawincdb__tm(0,&response);//IsisEPS_getRawHKDataCDB(0,board,&p_rawhk_data_cdb,&p_rsp_code);
-  	if(err!=0)
-  			return FALSE;
-  	sat_packet_t cmd ={0};
-  	eps_subtypes_t Get_EPS_RAW_DBoard ;
-  	err = AssembleCommand(response.raw ,sizeof(response) ,eps_cmd_type ,Get_EPS_RAW_DBoard , 0x2568,&cmd);
-  	if(err!=0)
-  		return FALSE;
-  	TransmitSplPacket(&cmd,NULL);
+//  	if(!CheckTransmitionAllowed())
+//  			return FALSE;
+//  	int err= isis_eps__gethousekeepingrawincdb__tm(0,&response);//IsisEPS_getRawHKDataCDB(0,board,&p_rawhk_data_cdb,&p_rsp_code);
+//  	if(err!=0)
+//  			return FALSE;
+//  	sat_packet_t cmd ={0};
+//  	err = AssembleCommand(response.raw ,sizeof(response) ,eps_cmd_type ,Get_EPS_Eng_MBoard , 0x2568,&cmd);
+//  	if(err!=0)
+//  		return FALSE;
+//  	TransmitSplPacket(&cmd,NULL);
   	return TRUE;
   }
 
@@ -745,7 +732,7 @@ Boolean getEPS_device()
 		return FALSE ;
 
 	sat_packet_t cmd = { 0 };
-	err = AssembleCommand(response.raw, sizeof(response),eps_cmd_type,Get_EPS_StateData, 0x54594245, &cmd);
+	err = AssembleCommand(response.raw, sizeof(response),eps_cmd_type, Get_EPS_StateData, 0x54594245, &cmd);
 	//err= AssembleCommand(EPS_system_state_information, sizeof(EPS_system_state_information), eps_cmd_type,Get_EPS_StateData, 0x54594245, &cmd);
 	if(0!=err)
 			return FALSE ;

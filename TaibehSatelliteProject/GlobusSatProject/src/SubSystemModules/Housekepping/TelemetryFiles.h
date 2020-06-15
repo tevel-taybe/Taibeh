@@ -20,21 +20,23 @@
 #define FILENAME_RX_REVC				"rxRevC"
 #define FILENAME_RX_FRAME				"rxFrame"
 #define FILENAME_ANTENNA_TLM			"ant"
+#define FILENAME_LOG_TLM    			"LOG"
 
 typedef enum {
-	tlm_wod,
-	tlm_eps_raw_mb,
-	tlm_eps_eng_mb,
-	tlm_eps_raw_cdb,
-	tlm_eps_eng_cdb,
-	tlm_solar,
-	tlm_tx,
-	tlm_tx_revc,
-	tlm_rx,
-	tlm_rx_revc,
-	tlm_rx_frame,
-	tlm_antenna,
-	tlm_operation_data,
+	tlm_wod,			//0x00
+	tlm_eps_raw_mb,		//0x01
+	tlm_eps_eng_mb,		//0x02
+	tlm_eps_raw_cdb,	//0x03
+	tlm_eps_eng_cdb,	//0x04
+	tlm_solar,			//0x05
+	tlm_tx,				//0x06
+	tlm_tx_revc,		//0x07
+	tlm_rx,				//0x08
+	tlm_rx_revc,		//0x09
+	tlm_rx_frame,		//0x0A
+	tlm_antenna,		//0x0b
+	//tlm_operation_data,
+	tlm_log_file		//0x0c
 
 }tlm_type;
 #endif /* TELEMETRYFILES_H_ */

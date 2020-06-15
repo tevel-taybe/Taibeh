@@ -5,8 +5,9 @@
 
 #include <hal/Storage/FRAM.h>
 #include <hal/Timing/Time.h>
-#include <hal/errors.h>
 
+#include <hal/errors.h>
+#include <stdio.h>
 #include <at91/utility/trace.h>
 
 #include <string.h>
@@ -126,13 +127,12 @@ FileSystemResult InitializeFS(Boolean first_time)
 	ret = f_getfreespace(f_getdrive(),&space);
 	if(!ret)
 	{
-	printf("There are %lu bytes total, %lu bytes free, \
-	%lu bytes used, %lu bytes bad.",
-	space.total, space.free, space.used, space.bad);
+		printf("There are %lu bytes total, %lu bytes free, %lu bytes used, %lu bytes bad.",
+							space.total, space.free, space.used, space.bad);
 	}
 	else
 	{
-	printf("\nError %d reading drive\n", ret);
+		printf("\nError %d reading drive\n", ret);
 	}
 
 	return FS_SUCCSESS;
@@ -143,7 +143,7 @@ FileSystemResult c_fileCreate(char* c_file_name,int size_of_element)
 {
 	if(strlen(c_file_name)>MAX_F_FILE_NAME_SIZE)//check len
 	{
-		return FS_TOO_LONG_NAME;
+		return FS_TOO_LONG_NAME;//TODO: return Error
 	}
 
 	C_FILE c_file; //chain file descriptor
@@ -452,6 +452,31 @@ FileSystemResult fileRead(char* c_file_name,byte* buffer, int size_of_buffer,
 	return FS_SUCCSESS;
 }
 
+/* TODO: download log command
+void ffff(cmd){
+	LogFileRecord r[2];
+
+		f_enterFS();
+			F_FILE *fp = f_open(FILENAME_LOG, "r");
+			if(fp != NULL){
+
+				int n = f_read(&r, sizeof(r), 2, fp);
+				while(n > 0){
+					// r --> reply command
+					// send
+
+				}
+
+				f_flush(fp);
+				f_close(fp);
+				printf("::::   logger was written  \n");
+			}else{
+				printf("logegr can't open file\n");
+			}
+
+			f_releaseFS();
+}
+*/
 
 void print_file(char* c_file_name)
 {
@@ -537,60 +562,78 @@ static const char* ComponentNames[] = {
 #define LOG_MAX_FILES				10
 
 static int g_log_records_written = 0;
-static g_log_file_index = 0;
-static LogSeverity  g_log_level = LOG_ERROR;
+static int g_log_file_index = 0;
+static LogSeverity  g_log_level = LOG_INFO;
 
 FileSystemResult logFileWrite(char* c_file_name, void* element)
 {
-	C_FILE c_file;
-	unsigned int addr;//FRAM ADDRESS
-	F_FILE *file;
-	char curr_file_name[MAX_F_FILE_NAME_SIZE+sizeof(int)*2];
-	unsigned int curr_time;
-	Time_getUnixEpoch(&curr_time);
-	if(get_C_FILE_struct(c_file_name,&c_file,&addr)!=TRUE)//get c_file
-	{
-		return FS_NOT_EXIST;
-	}
-
-	if(g_log_records_written == LOG_RECORDS_PER_FILE)
-	{
-		++g_log_file_index;
-		g_log_records_written=0;
-	}
-	if(g_log_file_index == LOG_MAX_FILES)
-	{
-		g_log_file_index = 0;
-	}
-	int index_current = g_log_file_index;
-	get_file_name_by_index(c_file_name,index_current,curr_file_name);
-	int error = f_enterFS();
-	(void)error;
-	//check_int("c_fileWrite, f_enterFS", error);
-	file = f_open(curr_file_name,"a+");
-	writewithEpochtime(file,element,c_file.size_of_element,curr_time);
-	c_file.last_time_modified= curr_time;
-	if(FRAM_write((unsigned char *)&c_file,addr,sizeof(C_FILE))!=0)//update last written
-	{
-		return FS_FRAM_FAIL;
-	}
-	++g_log_records_written;
-	f_close(file);
-	f_releaseFS();
-	return FS_SUCCSESS;
+		C_FILE c_file;
+		unsigned int addr;//FRAM ADDRESS
+		F_FILE *file;
+		char curr_file_name[MAX_F_FILE_NAME_SIZE+sizeof(int)*2];
+		unsigned int curr_time;
+		Time_getUnixEpoch(&curr_time);
+		if(get_C_FILE_struct(c_file_name,&c_file,&addr)!=TRUE)//get c_file
+		{
+			return FS_NOT_EXIST;
+		}
+		int index_current = getFileIndex(c_file.creation_time,curr_time);
+		get_file_name_by_index(c_file_name,index_current,curr_file_name);
+		int error = f_enterFS();
+		(void)error;
+		//check_int("c_fileWrite, f_enterFS", error);
+		file = f_open(curr_file_name,"a+");
+		writewithEpochtime(file,element,c_file.size_of_element,curr_time);
+		c_file.last_time_modified= curr_time;
+		if(FRAM_write((unsigned char *)&c_file,addr,sizeof(C_FILE))!=0)//update last written
+		{
+			return FS_FRAM_FAIL;
+		}
+		f_close(file);
+		f_releaseFS();
+		return FS_SUCCSESS;
 }
+
+//	C_FILE c_file;
+//	unsigned int addr;//FRAM ADDRESSç
+//	f_releaseFS();
+//	return FS_SUCCSESS;
+//}
 
 int wlog(ComponentName component, LogSeverity severity, int err, const char *discription)
 {
 	if(severity >= g_log_level)
 	{
-		LogFileRecord_t r;
+		LogFileRecord r;
 		strcpy(r.comp_name, ComponentNames[component]);
 		r.level=severity;
 		r.error=err;
 		strcpy(r.content,discription);
-
+		int err = logFileWrite(FILENAME_LOG_TLM, &r);
+		if ( err != 0) {
+			// TODO: need to be removed                                    
+			printf("8888888888888888888 log file was not written 88888888888888888888888888\n");
+		}
+//		f_enterFS();
+//		F_FILE *fp = f_open(FILENAME_LOG, "a");
+//		if(fp != NULL){
+//			int n = f_write(&r, sizeof(r), 1, fp);
+//
+//			f_flush(fp);
+//			f_close(fp);
+//			printf("::::   logger was written  \n");
+//		}else{
+//			printf("logegr can't open file\n");
 	}
+
+		f_releaseFS();
+
+//
+//		FileSystemResult res = logFileWrite(FILENAME_LOG, &r);
+//		if(res != FS_SUCCSESS){
+//			printf("-----------error saving to log file: %d\n", res);
+//		}
+
 	return 0;
 }
 

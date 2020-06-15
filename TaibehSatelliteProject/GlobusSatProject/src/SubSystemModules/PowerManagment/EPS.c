@@ -64,7 +64,7 @@ int EPS_Init()
 ///   make sure we still need all the above code
 int EPS_Conditioning()
 {
-	voltage_t curr_voltage = 0;				// x[i]
+	voltage_t curr_voltage = 0; // x[i]
 	GetBatteryVoltage(&curr_voltage);
 
 	voltage_t filtered_voltage = 0;					// the currently filtered voltage; y[i]
@@ -118,10 +118,8 @@ int GetBatteryVoltage(voltage_t *vbatt)
 #ifdef ISISEPS
 	//isis_eps__gethousekeepingengincdb__from_t
 	isis_eps__gethousekeepingengincdb__from_t hk_tlm;//ieps_enghk_data_cdb_t hk_tlm;isis_eps__gethousekeepingengincdb__from_t hk_tlm;
-	//ieps_statcmd_t cmd;
-	//ieps_board_t board = ieps_board_cdb1;
-	err = isis_eps__gethousekeepingengincdb__tm(EPS_I2C_BUS_INDEX, &hk_tlm);//err = IsisEPS_getEngHKDataCDB(EPS_I2C_BUS_INDEX, board, &hk_tlm, &cmd);
-	*vbatt= hk_tlm.fields.batt_input.fields.volt; //*vbatt = hk_tlm.fields.bat_voltage;// to check with Adi if the bat voltage is the same as hk_tlm.fields.batt_input.fields.volt
+	err = isis_eps__gethousekeepingengincdb__tm(EPS_I2C_BUS_INDEX, &hk_tlm);
+	*vbatt= hk_tlm.fields.batt_input.fields.volt; //*vbatt = hk_tlm.fields.bat_voltage;
 	return 0;
 	#endif
 #ifdef GOMEPS

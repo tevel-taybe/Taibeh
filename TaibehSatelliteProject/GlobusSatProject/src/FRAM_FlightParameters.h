@@ -90,6 +90,6 @@
 #define EPS_ALPHA_FILTER_VALUE_ADDR 0x550			//<! filtering value in the LPF formula
 #define EPS_ALPHA_FILTER_VALUE_SIZE sizeof(float)	//<! size of double (alpha)
 // </EPS>
-
+#define NUMBER_OF_SOLAR_PANELS		  6
 
 #endif /* FRAM_FLIGHTPARAMETERS_H_ */

@@ -11,9 +11,11 @@
 #include "SubSystemModules/Communication/TRXVU.h"
 #include "SubSystemModules/Maintenance/Maintenance.h"
 #include "SubSystemModules/Housekepping/TelemetryCollector.h"
+#include <satellite-subsystems/IsisAntS.h>
 #include "InitSystem.h"
 #include "TLM_management.h"
-
+#include "Logger.h"
+#include <hal/Storage/FRAM.h>
 #ifdef GOMEPS
 #include <satellite-subsystems/GomEPS.h>
 #endif
@@ -69,10 +71,10 @@ int firstActivationProcedure()
 #endif
 	}
 
-#ifndef TESTING // need to be removed and once we got the 30 mins to deploy Ants
-	IsisAntS_autoDeployment(0, isisants_sideA, 10);
-	IsisAntS_autoDeployment(0, isisants_sideB, 10);
-#endif
+//#ifndef TESTING // need to be removed and once we got the 30 mins to deploy Ants
+	//IsisAntS_autoDeployment(0, isisants_sideA, 10);
+	//IsisAntS_autoDeployment(0, isisants_sideB, 10);
+//#endif
 	//updating deploy time and Activation flag
 	time_unix deploy_time = 0;
 	Time_getUnixEpoch(&deploy_time);
@@ -124,24 +126,48 @@ void WriteDefaultValuesToFRAM()
 }
 
 int StartFRAM()
+
 {
-	int error = FRAM_start();
+	int error =0;
+			error = FRAM_start();
 	return error;
 }
 
 int StartI2C()
 {
+
 	int error = I2C_start(I2c_SPEED_Hz, I2c_Timeout);
 	return error;
 }
 
 int StartSPI()
+
 {
 	int error = SPI_start(bus1_spi, slave1_spi);
 	return error;
 }
 
 int StartTIME()
+/*
+ {
+int error = 0;
+Time expected_deploy_time = UNIX_DATE_JAN_D1_Y2000;
+
+
+error = Time_start(&expected_deploy_time, 0);
+if (0 != error)
+{
+return error;
+}
+time_unix time_before_wakeup = 0;
+if (!isFirstActivation()) {
+FRAM_read((char*) &time_before_wakeup,MOST_UPDATED_SAT_TIME_ADDR, MOST_UPDATED_SAT_TIME_SIZE);
+
+Time_setUnixEpoch(time_before_wakeup);
+}
+return 0;
+}
+ */
 {
 	int error = 0;
 	Time expected_deploy_time = UNIX_DEPLOY_DATE_JAN_D1_Y2020;
@@ -157,18 +183,24 @@ int StartTIME()
 	}
 	return 0;
 }
-
+Boolean8bit tlms_created[NUMBER_OF_TELEMETRIES];
 int DeploySystem()
 {
-	Boolean first_activation = isFirstActivation();
+	//TelemetryCreateFiles(tlms_created);
+	Boolean first_activation=1;
+
+	//Boolean first_activation = isFirstActivation();
+
 
 	if (first_activation!=0)// Activation was done !
 	{
+		TelemetryCreateFiles(tlms_created);//TODO: need to removed
+		first_activation = 0 ;//TODO: need to removed
 		return 0;
 	}
-	else
+	/*else
 	{
-		firstActivationProcedure();
+		 firstActivationProcedure();
 		time_unix deploy_time = 0;
 		Time_getUnixEpoch(&deploy_time);
 		FRAM_write((unsigned char*) deploy_time, DEPLOYMENT_TIME_ADDR,DEPLOYMENT_TIME_SIZE);
@@ -177,7 +209,7 @@ int DeploySystem()
 		FRAM_write((unsigned char*) &first_activation,FIRST_ACTIVATION_FLAG_ADDR, FIRST_ACTIVATION_FLAG_SIZE);
 
 		WriteDefaultValuesToFRAM();
-	}
+	} */
 	return 0;
 }
 
@@ -188,30 +220,31 @@ int InitSubsystems()
 	int err = 0;
 
 	err = StartI2C();
-	PRINT_IF_ERR(StartI2C) // need to be moved to log file
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling start I2C function\n");
 
 	err = StartSPI();
-	PRINT_IF_ERR(StartSPI)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling start SPI function\n");
 
 	err = StartFRAM();
-	PRINT_IF_ERR(StartFRAM)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling start FRAM function\n");
 
 	err = StartTIME();
-	PRINT_IF_ERR(StartTIME)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling Start time function\n");
 
 	err = InitializeFS(isFirstActivation());
-	PRINT_IF_ERR(InitializeFS)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling initialize FS function\n");
 
 	err = EPS_Init();
-	PRINT_IF_ERR(EPS_Init)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling EPS Init function\n");
 
 	err = InitTrxvu();
-	PRINT_IF_ERR(InitTrxvu)
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling Init Trxvu function\n");
 
-#ifndef TESTING    ///to prevent entering to deployment
+
 	err = DeploySystem();
-	PRINT_IF_ERR(DeploySystem)
-#endif
-	return 0;
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling Deploying System function\n");
+
+	err = WakeupFromResetCMD();
+	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling wake up from reset function\n");
 }
 

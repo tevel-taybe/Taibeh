@@ -1,6 +1,6 @@
 #include <string.h>
 #include <hal/errors.h>
-
+#include <stdio.h>
 #include "TRXVU.h"
 #include "ActUponCommand.h"
 #include "CommandDictionary.h"

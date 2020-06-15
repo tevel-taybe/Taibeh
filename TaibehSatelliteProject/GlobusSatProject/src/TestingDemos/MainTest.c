@@ -24,7 +24,7 @@
 
 Boolean selectAndExecuteTest()
 {
-	wlog(CNAME_EPS,LOG_INFO,4,"testing the log\n");
+	wlog(CNAME_EPS,LOG_ERROR,4,"testing the log\n");
 	unsigned int selection = 0;
 	Boolean offerMoreTests = TRUE;
 

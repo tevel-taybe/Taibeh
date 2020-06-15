@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <satellite-subsystems/IsisTRXVU.h>
@@ -11,10 +12,13 @@
 #include "SubSystemModules/Communication/SatDataTx.h"
 #include "TRXVU_Commands.h"
 #include "SubSystemModules/Communication/Beacon.h"
+#include "TLM_management.h"
+
 
 
 int CMD_StartDump(sat_packet_t *cmd)
 {
+	printf("******************************************getting into startDump function******************************** ");
 	int err = 0;
 	err = DumpTelemetry(cmd);
 	return err;
@@ -41,15 +45,31 @@ int CMD_ForceDumpAbort(sat_packet_t *cmd)
 	return 0;
 }
 
+int CMD_SetIdleState(sat_packet_t *cmd)
+{
+	    ISIStrxvuIdleState state;
+		memcpy(&state,cmd->data,sizeof(state));
+		time_unix duaration = 0;
+		if (state == trxvu_idle_state_on)
+		{
+			memcpy(&duaration,cmd->data+sizeof(state),sizeof(duaration));
+		}
+		int err = SetIdleState(state,duaration);
+		if (err == 0)
+		{
+			SendAckPacket(ACK_CMD_DONE, cmd, NULL, 0);
+		}
+
+		return err;
+}
 
 int CMD_MuteTRXVU(sat_packet_t *cmd)
 {
-	///char waheeb[10];
-	// memcpy(&waheeb,cmd->data,sizeof(waheeb);
+
 	int err = 0;
-	time_unix mute_duaration = 0;
-	memcpy(&mute_duaration, cmd->data, sizeof(mute_duaration));// (&data
-	err = muteTRXVU(mute_duaration);
+	time_unix mute_period = 0;
+	memcpy(&mute_period, cmd->data, sizeof(mute_period));// (&data
+	err = muteTRXVU(mute_period);
 	return err;
 }
 

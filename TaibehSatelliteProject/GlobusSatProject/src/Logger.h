@@ -1,13 +1,13 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
-#include "Logger.h"
+
 #include <string.h>
 #include <stdio.h>
 #include <hal/errors.h>
 #include "TLM_management.h"
 #include <SubSystemModules/Housekepping/TelemetryFiles.h>
-
+#include <Logger.h>
 
 //int logError(int error);
 //
@@ -22,9 +22,11 @@
 #define 		MAX_LOG_CONTENT			64
 #define 		MAX_LOG_COMPONENT_NAME 	16
 
+
+
 typedef enum LogSeverity {
-	LOG_INFO,
-	LOG_ERROR
+	LOG_ERROR,
+	LOG_INFO
 } LogSeverity;
 
 typedef struct LogFileRecord
@@ -35,13 +37,14 @@ typedef struct LogFileRecord
 	char content[MAX_LOG_CONTENT];
 	char comp_name[MAX_LOG_COMPONENT_NAME];
 
-} LogFileRecord_t;
+} LogFileRecord;
 
 typedef enum ComponentName {
 	CNAME_EPS,
 	CNAME_TRXVU,
 	CNAME_ANTS,
 	CNAME_GENERAL,
+	CNAME_MTNCE,
 	CNAME_SOLAR
 } ComponentName;
 

@@ -17,6 +17,7 @@
 #include "SPL.h"
 #include "Beacon.h"
 #include "SatDataTx.h"
+#include "Logger.h"
 
 time_unix g_prev_beacon_time = 0;				// the time at which the previous beacon occured
 time_unix g_beacon_interval_time = 0;			// seconds between each beacon
@@ -28,13 +29,16 @@ int Beacon_SetInterval(time_unix interval)
 	int err = FRAM_write((unsigned char*) &interval, BEACON_INTERVAL_TIME_ADDR, BEACON_INTERVAL_TIME_SIZE);
 	if(err != 0){
 		g_beacon_interval_time = interval;
+		wlog(CNAME_GENERAL,LOG_ERROR,err,"couldn't write intvl time to FRAM, the required value used instead\n");
 		return -1; // OK, but not saved in FRAM
 	}
 	err = FRAM_read((unsigned char*) &g_beacon_interval_time,BEACON_INTERVAL_TIME_ADDR,BEACON_INTERVAL_TIME_SIZE);
 	if(err != 0) {
 		g_beacon_interval_time = interval;
+		wlog(CNAME_GENERAL,LOG_ERROR,err,"Couldn't read intvl from the FRAM, the required value used instead\n");
 		return -2; //OK, but problem reading from FRAM
 	}
+	//TODO: need to be deleted.
 	printf("beacon interval time set: %d \n", (int) g_beacon_interval_time);
 	return 0; //ALL IS OK
 }
@@ -67,14 +71,16 @@ void InitBeaconParams()
 //}
 
 void BeaconLogic()
-///  ************  TODO:      MAKE SURE TO DELETE ALL print outs after testing ******************//////
+///  TODO:      MAKE SURE TO DELETE ALL print outs after testing ******************//////
 {
-	printf("======================================== beacon function\n");
+	printf("======================================== =============================================beacon function\n");
 	if(!CheckTransmitionAllowed())
 	{
+		printf("waheeb..........................................  transmission not allowed ............... /n");
 		return;
+
 	}
-	printf("transmission allowed\n");
+	printf("=========================================transmission allowed===========================================================\n");
 	int err = 0;
 	if (!CheckExecutionTime(g_prev_beacon_time, g_beacon_interval_time))
 	{
@@ -83,9 +89,8 @@ void BeaconLogic()
 
 	WOD_Telemetry_t wod = { 0 };
 	GetCurrentWODTelemetry(&wod);
-    //printf("preparing the beacon to be sent \n");
 	sat_packet_t cmd = { 0 };
-	err = AssembleCommand((unsigned char*) &wod, sizeof(wod), trxvu_cmd_type,BEACON_SUBTYPE, 0xFFFFFFFF, &cmd);
+	err = AssembleCommand((unsigned char*) &wod, sizeof(wod), trxvu_cmd_type,BEACON_SUBTYPE, 0xFFFFFF03, &cmd);
 	if (0 != err) {
 		return;
 	}
@@ -95,8 +100,8 @@ void BeaconLogic()
 	//BeaconSetBitrate();
 
 	TransmitSplPacket(&cmd , NULL);
-	//IsisTrxvu_tcSetAx25Bitrate(ISIS_TRXVU_I2C_BUS_INDEX, trxvu_bitrate_9600);
-	printf("*********************************Beacon was transmitted\n************************");
+
+	printf("WWWWWWW    WWWWWWWWWWWWWWWWWWWWWW     WWWWWWWWWWWWBeacon was transmitted====//////++++++++++++++++\n");
 }
 
 int UpdateBeaconBaudCycle(unsigned char cycle)

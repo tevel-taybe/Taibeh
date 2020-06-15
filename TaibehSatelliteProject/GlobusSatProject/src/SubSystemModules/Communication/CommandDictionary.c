@@ -14,20 +14,21 @@
 //#include "SubSystemModules/Communication/SubsystemCommands/FS_Commands.h"
 //#include "TLM_management.h"
 
-int trxvu_command_router(sat_packet_t *cmd)
-{
+int trxvu_command_router(sat_packet_t *cmd) {
 	int err = 0;
-	sat_packet_t delayed_cmd = {0};
+	sat_packet_t delayed_cmd = { 0 };
 	//TODO: finish 'trxvu_command_router'
-	printf("inside router ******** command is %x %x\n", (int)cmd->cmd_type, (int)cmd->cmd_subtype);
-	switch (cmd->cmd_subtype)
-	{
+	printf("inside router ******** command is %x %x\n", (int) cmd->cmd_type,
+			(int) cmd->cmd_subtype);
+	switch (cmd->cmd_subtype) {
 	case DUMP_SUBTYPE:
 		err = CMD_StartDump(cmd);
+		printf(
+				"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  we entered to the start dump case !!!!!!!!!!!!!!!!!!!!!!!!!! ");
 		break;
 
 	case DUMP_STOP_SUBTYPE:
-		err=CMD_StopDump(cmd);
+		err = CMD_StopDump(cmd);
 		break;
 	case ABORT_DUMP_SUBTYPE:
 		err = CMD_SendDumpAbortRequest(cmd);
@@ -43,6 +44,10 @@ int trxvu_command_router(sat_packet_t *cmd)
 
 	case UNMUTE_TRXVU:
 		err = CMD_UnMuteTRXVU(cmd);
+		break;
+
+	case TRXVU_IDLE:
+		err = CMD_SetIdleState(cmd);
 		break;
 
 	case GET_BAUD_RATE:
@@ -82,7 +87,7 @@ int trxvu_command_router(sat_packet_t *cmd)
 		break;
 
 	case ADD_DELAYED_COMMAND_CMD:
-		ParseDataToCommand(cmd->data,&delayed_cmd);
+		ParseDataToCommand(cmd->data, &delayed_cmd);
 		err = AddDelayedCommand(&delayed_cmd);
 		break;
 
@@ -103,8 +108,8 @@ int trxvu_command_router(sat_packet_t *cmd)
 		break;
 
 	case SET_ARM_DISARM_ANTS_STATUS:
-	    err= CMD_ArmDisArmAnt(cmd);
-	    break;
+		err = CMD_ArmDisArmAnt(cmd);
+		break;
 
 //	case DIS_ARM_ANT:
 //		 err= CMD_DisArmAtn(cmd);
@@ -119,49 +124,46 @@ int trxvu_command_router(sat_packet_t *cmd)
 		break;
 
 	case UPLOAD_TIME:
-			err = CMD_Upload_Time(cmd);
+		err = CMD_Upload_Time(cmd);
 		break;
 
 	case RE_DEPLOY_ANTS:
-			err = CMD_Re_Deploy_Ants(cmd);
-			break;
+		err = CMD_Re_Deploy_Ants(cmd);
+		break;
 	case ECHO_SUBTYPE:
 		err = CMD_Echo(cmd);
 		break;
 
 	default:
-		printf(" ********************Default comamnd is %dx %x\n", (int)cmd->cmd_type, (int)cmd->cmd_subtype);
-		err = SendAckPacket(ACK_UNKNOWN_SUBTYPE,cmd,NULL,0);
+		printf(" ********************Default comamnd is %dx %x\n",
+				(int) cmd->cmd_type, (int) cmd->cmd_subtype);
+		err = SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
 	}
 
-
-	SendErrorMSG_IfError(ACK_ERROR_MSG,cmd,err);
+	SendErrorMSG_IfError(ACK_ERROR_MSG, cmd, err);
 
 	return err;
 }
 
-int eps_command_router(sat_packet_t *cmd)
-{
+int eps_command_router(sat_packet_t *cmd) {
 	//TODO: finish 'eps_command_router'
 	int err = 0;
 
-	switch (cmd->cmd_subtype)
-	{
+	switch (cmd->cmd_subtype) {
 	case 0:
-		err = UpdateAlpha(*(float*)cmd->data);
-		SendErrorMSG(ACK_ERROR_MSG, ACK_UPDATE_EPS_ALPHA,cmd, err);
+		err = UpdateAlpha(*(float*) cmd->data);
+		SendErrorMSG(ACK_ERROR_MSG, ACK_UPDATE_EPS_ALPHA, cmd, err);
 		break;
 
 	default:
-		SendAckPacket(ACK_UNKNOWN_SUBTYPE,cmd,NULL,0);
+		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
 	}
 	return err;
 }
 
-int telemetry_command_router(sat_packet_t *cmd)
-{
+int telemetry_command_router(sat_packet_t *cmd) {
 	//TODO: finish 'telemetry_command_router'
 	int err = 0;
 //	switch (cmd->cmd_subtype)
@@ -178,13 +180,10 @@ int telemetry_command_router(sat_packet_t *cmd)
 	return err;
 }
 
-int managment_command_router(sat_packet_t *cmd)
-{
+int managment_command_router(sat_packet_t *cmd) {
 	//TODO: finish 'managment_command_router'
 	int err = 0;
-	switch (cmd->cmd_subtype)
-	{
-
+	switch (cmd->cmd_subtype) {
 
 	case SOFT_RESET_SUBTYPE:
 		CMD_ResetComponent(reset_software);
@@ -209,45 +208,38 @@ int managment_command_router(sat_packet_t *cmd)
 		CMD_ResetComponent(reset_filesystem);
 		break;
 
-
 	default:
-		SendAckPacket(ACK_UNKNOWN_SUBTYPE,cmd,NULL,0);
+		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
 	}
 	return err;
 }
 
-int filesystem_command_router(sat_packet_t *cmd)
-{
+int filesystem_command_router(sat_packet_t *cmd) {
 	//TODO: finish 'filesystem_command_router'
 	int err = 0;
-	switch (cmd->cmd_subtype)
-	{
+	switch (cmd->cmd_subtype) {
 	case 0:
 
 		break;
 
-
 	default:
-		SendAckPacket(ACK_UNKNOWN_SUBTYPE,cmd,NULL,0);
+		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
 	}
 	return err;
 }
 
-
-int maintenance_command_router(sat_packet_t *cmd)
-{
+int maintenance_command_router(sat_packet_t *cmd) {
 	int err = 0;
-	switch (cmd->cmd_subtype)
-	{
-	case GENERIC_I2C:
-		err= CMD_GenericI2C(cmd);
+	switch (cmd->cmd_subtype) {
+	case I2C_Generic_CMD:
+		err = CMD_GenericI2C(cmd);
 
 		break;
 
 	default:
-		SendAckPacket(ACK_UNKNOWN_SUBTYPE,cmd,NULL,0);
+		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
 	}
 	return err;

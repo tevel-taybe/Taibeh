@@ -73,7 +73,7 @@ static Boolean dolevTest()
 {
 
 	res[3]=0;
-	char command = OPEN_SMPA;
+	unsigned char command = OPEN_SMPA;
 	unsigned char wtd_and_read[] = {CLEAR_WDT_AND_ALLOW_READ};
 	I2C_write(SOREQ_I2C_ADDRESS,&command,1);
 	vTaskDelay(100);
@@ -87,7 +87,7 @@ static Boolean dolevTest()
 		if((i++)==10)
 		{
 			command = STOP_SMPA_OPENING;
-			I2C_write(SOREQ_I2C_ADDRESS,&command,1);
+			I2C_write(SOREQ_I2C_ADDRESS, &command,1);
 		}
 	}
 	return TRUE;
@@ -95,7 +95,7 @@ static Boolean dolevTest()
 
 Boolean selectAndExecuteGeckoDemoTest( void )
 {
-	unsigned int selection = 0;
+	int selection = 0;
 	Boolean offerMoreTests = TRUE;
 
 	printf("\n\r Select a test to perform: \n\r");

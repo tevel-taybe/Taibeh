@@ -510,12 +510,12 @@ extern F_FILE_CHANGED_EVENTFUNC  f_filechangedevent;
  #define f_setlabel( drivenum, label )                                  fm_setlabel( drivenum, label )
 
  #define f_get_oem( drivenum, str, maxlen )                             fm_get_oem( drivenum, str, maxlen )
-#endif /* if ( !FN_CAPI_USED ) */
 
 #if HCC_UNICODE
  #if ( !FN_CAPI_USED )
   #define F_WFIND FN_WFIND
   #define f_wgetcwd( buffer, maxlen )                fm_wgetcwd( buffer, maxlen )
+#endif /* if ( !FN_CAPI_USED ) */
   #define f_wgetdcwd( drivenum, buffer, maxlen )     fm_wgetdcwd( drivenum, buffer, maxlen )
   #define f_wchdir( dirname )                        fm_wchdir( dirname )
   #define f_wmkdir( dirname )                        fm_wmkdir( dirname )
@@ -613,11 +613,11 @@ int  fm_ftruncate ( FN_FILE * filehandle, unsigned long length );
 long fm_read ( void * buf, long size, long size_st, FN_FILE * filehandle );
 long fm_write ( const void * buf, long size, long size_st, FN_FILE * filehandle );
 
-int fm_seek ( FN_FILE * filehandle, long offset, long whence );
 
 long fm_tell ( FN_FILE * filehandle );
 int fm_getc ( FN_FILE * filehandle );
 int fm_putc ( int ch, FN_FILE * filehandle );
+int fm_seek ( FN_FILE * filehandle, long offset, long whence );
 int fm_rewind ( FN_FILE * filehandle );
 int fm_eof ( FN_FILE * filehandle );
 int fm_seteof ( FN_FILE * filehandle );

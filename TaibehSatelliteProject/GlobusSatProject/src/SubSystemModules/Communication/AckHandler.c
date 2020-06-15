@@ -10,13 +10,12 @@
 #include "SatDataTx.h"
 #include "TRXVU.h"
 
-int SendAckPacket(ack_subtype_t acksubtype, sat_packet_t *cmd,
-		unsigned char *data, unsigned int length)
+int SendAckPacket(ack_subtype_t acksubtype, sat_packet_t *cmd,unsigned char *data, unsigned int length)
 {
 	int err = 0;
 	sat_packet_t ack = { 0 };
 	unsigned int id = 0;
-	id = 0xFFFFFFFF; //default ID. system ACK. not a response to any command
+	id = 0xffffff03; //default ID. system ACK. not a response to any command
 
 	if (NULL != cmd) {
 		id = cmd->ID;

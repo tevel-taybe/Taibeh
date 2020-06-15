@@ -19,8 +19,6 @@ typedef struct __attribute__ ((__packed__)) OperationalData
 
 } OperationalData_t;
 
-
-//TODO: finish WOD telemetry according to requirements... TRX TLM...
 typedef struct __attribute__ ((__packed__)) WOD_Telemetry_t
 {
 	time_unix sat_time;				///< current Unix time of the satellites clock [sec]
@@ -36,10 +34,14 @@ typedef struct __attribute__ ((__packed__)) WOD_Telemetry_t
 	unsigned int free_memory;		///< number of bytes free in the satellites SD [byte]
 	unsigned int corrupt_bytes;		///< number of currpted bytes in the memory	[bytes]
 	unsigned short number_of_resets;///< counts the number of resets the satellite has gone through [#]
-	//unsigned short num_of_cmd_resets;
+
+	temp_t bat_temp ;
+	temp_t solar_panels[NUMBER_OF_SOLAR_PANELS];
+	temp_t mcu_temp ;
+
 } WOD_Telemetry_t;
 
-#define NUMBER_OF_TELEMETRIES 10	///< number of telemetries the satellite saves
+#define NUMBER_OF_TELEMETRIES 11	///< number of telemetries the satellite saves
 #define NUM_OF_SUBSYSTEMS_SAVE_FUNCTIONS 5			///<
 /*!
  * @brief copies the corresponding filename into a buffer.
