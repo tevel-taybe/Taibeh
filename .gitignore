@@ -3,3 +3,6 @@ Releases
 *.o
 *.d
 doxygen
+*.elf
+*.bin
+*.map
