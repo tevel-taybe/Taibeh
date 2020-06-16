@@ -54,6 +54,8 @@ int CMD_SetIdleState(sat_packet_t *cmd)
 		{
 			memcpy(&duaration,cmd->data+sizeof(state),sizeof(duaration));
 		}
+		else
+			SetIdleState(trxvu_idle_state_off,0);
 		int err = SetIdleState(state,duaration);
 		if (err == 0)
 		{

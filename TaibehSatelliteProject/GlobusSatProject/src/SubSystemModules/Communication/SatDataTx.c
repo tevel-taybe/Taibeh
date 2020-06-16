@@ -159,7 +159,7 @@ int TransmitSplPacket(sat_packet_t *packet, int *avalFrames) {
 			sizeof(packet->cmd_type)+
 			sizeof(packet->ID);
 
-	if (xSemaphoreTake(xIsTransmitting,SECONDS_TO_TICKS(1)) != pdTRUE) {
+	if (xSemaphoreTake(xIsTransmitting, SECONDS_TO_TICKS(1)) != pdTRUE) {
 		return E_GET_SEMAPHORE_FAILED;
 	}
 	err = IsisTrxvu_tcSendAX25DefClSign(ISIS_TRXVU_I2C_BUS_INDEX,(unsigned char*) packet, data_length, (unsigned char*) &avalFrames);
