@@ -50,26 +50,24 @@ void taskMain()
 		printf("looping..................................................................................................................\n");
 		wlog(CNAME_GENERAL, LOG_INFO, 0, "Looping.....\n");
 		int err = EPS_Conditioning();
+		printf( "8888888888888888888888888888888888888888888   returned EPS result id %d\n",err );
 		if (0 != err)
 		{
+			printf("7777777777777777777777777777777777777       eps error returned code, %d",err);
 			wlog(CNAME_EPS,LOG_INFO,err,"Error in EPS conditioning procedure.\n");
 			wlog(CNAME_GENERAL,LOG_ERROR,err,"Couldn't read the Unix time in Maintenance procedure\n");
 		}
 		else
-			//TODO: printf("///////////////////////        EPS conditioning  .......   OK ...... /////////////////////////// \n");
-
-
-
-
-		 err = TRX_Logic();
-
+		//TODO: printf("///////////////////////        EPS conditioning  .......   OK ...... /////////////////////////// \n");
+		printf("no erro in eps99999999999999999999999999999999999999999999999999999999999999999");
+		err = TRX_Logic();
+		printf(" ************* %%%%%%%%%%  @@@@@@@@@     ###### returned TRX result id %d\n",err);
 		if (0!=err)
 		{
-
 			wlog(CNAME_TRXVU,LOG_ERROR,err,"Error in TRX Logic procedure.\n");
 
 		}
-		printf(" TRX LOgic OK /////////////////////////////////////*****************\ /////////////////////////////////////////////////////////\n");
+		printf(" TRX LOgic OK /////////////////////////////////////*****************/////////////////////////////////////////////////////////\n");
 		TelemetryCollectorLogic();
 
 		Maintenance();

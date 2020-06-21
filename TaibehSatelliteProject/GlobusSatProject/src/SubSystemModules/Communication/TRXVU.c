@@ -139,12 +139,9 @@ CommandHandlerErr TRX_Logic() {
 		}
 	    vTaskDelay(10);
 	    // TODO: need to add check for mute
-
 	    idle_status_check();
-
-
-			BeaconLogic();
-			vTaskDelay(5);
+		BeaconLogic();
+		vTaskDelay(5);
 
 	  if (cmd_command_found != err)
 		return err;

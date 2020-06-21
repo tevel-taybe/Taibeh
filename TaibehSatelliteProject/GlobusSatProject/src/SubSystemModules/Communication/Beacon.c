@@ -76,11 +76,11 @@ void BeaconLogic()
 	printf("======================================== =============================================beacon function\n");
 	if(!CheckTransmitionAllowed())
 	{
-		printf("waheeb..........................................  transmission not allowed ............... /n");
+		printf(" not.......not.......not.....not.............  transmission not allowed ............... /n");
 		return;
 
 	}
-	printf("=========================================transmission allowed===========================================================\n");
+	printf("==allowed===========allowed============transmission allowed===========================================================\n");
 	int err = 0;
 	if (!CheckExecutionTime(g_prev_beacon_time, g_beacon_interval_time))
 	{

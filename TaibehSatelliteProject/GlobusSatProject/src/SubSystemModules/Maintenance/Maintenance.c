@@ -28,6 +28,7 @@ Boolean CheckExecutionTime(time_unix prev_time, time_unix period)
 		wlog(CNAME_GENERAL,LOG_ERROR,err,"Error Reading Unix-time\n");
 		return FALSE;
 	}
+	period =1 ;
 	printf("curr = %d\n",curr);
 	printf("prev_time = %d\n",prev_time);
 	printf("period = %d\n",period);

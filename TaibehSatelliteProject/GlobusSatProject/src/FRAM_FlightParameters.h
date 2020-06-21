@@ -70,7 +70,7 @@
 
 #define DEFAULT_BEACON_INTERVAL_TIME 	20			//<! how many seconds between two beacons [sec]
 #define MAX_BEACON_INTERVAL				60			// beacon every 1 minute
-#define MIN_BEACON_INTERVAL				10			// beacon every 10 secinds
+#define MIN_BEACON_INTERVAL				10			// beacon every 10 seconds
 #define BEACON_INTERVAL_TIME_ADDR 		0x4590		//<! address of value of the delay between 2 beacons
 #define BEACON_INTERVAL_TIME_SIZE 		4			//<! size of parameter in bytes
 

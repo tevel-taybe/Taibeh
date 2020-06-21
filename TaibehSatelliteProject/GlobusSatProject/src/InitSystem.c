@@ -176,7 +176,8 @@ return 0;
 		return error;
 	}
 	time_unix time_before_wakeup = 0;
-	if (!isFirstActivation()) {
+	Boolean isFirst_Activation=0;
+	if (!isFirst_Activation) { //if (!isFirst_Activation())
 		FRAM_read((unsigned char*) &time_before_wakeup,MOST_UPDATED_SAT_TIME_ADDR, MOST_UPDATED_SAT_TIME_SIZE);
 
 		Time_setUnixEpoch(time_before_wakeup);
@@ -231,8 +232,8 @@ int InitSubsystems()
 	err = StartTIME();
 	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling Start time function\n");
 
-//	err = InitializeFS(isFirstActivation());
-	err = InitializeFS(1);
+    err = InitializeFS(isFirstActivation());
+	//err = InitializeFS(1);
 	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling initialize FS function\n");
 
 	err = EPS_Init();

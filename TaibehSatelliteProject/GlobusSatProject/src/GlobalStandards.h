@@ -51,8 +51,8 @@
 .minutes = 0,		\
 .hours = 0,			\
 .day = 1,			\
-.date = 1,			\
-.month = 8,			\
+.date = 21,			\
+.month = 6,			\
 .year = 20,			\
 .secondsOfYear = 0}
 

@@ -567,8 +567,7 @@ FileSystemResult logFileWrite(char* c_file_name, void* element) {
 //	return FS_SUCCSESS;
 //}
 
-int wlog(ComponentName component, LogSeverity severity, int err,
-		const char *discription) {
+int wlog(ComponentName component, LogSeverity severity, int err, const char *discription) {
 	if (severity >= g_log_level) {
 		LogFileRecord r;
 		strcpy(r.comp_name, ComponentNames[component]);
@@ -577,7 +576,6 @@ int wlog(ComponentName component, LogSeverity severity, int err,
 		strcpy(r.content, discription);
 		int err = logFileWrite(FILENAME_LOG_TLM, &r);
 		if (err != 0) {
-			// TODO: need to be removed                                    
 			printf(
 					"8888888888888888888 log file was not written 88888888888888888888888888\n");
 		}

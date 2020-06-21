@@ -226,7 +226,7 @@ void TelemetrySaveEPS()
 		if (isis_eps__gethousekeepingraw__tm(EPS_I2C_BUS_INDEX, &tlm_mb_raw) == 0)////err = IsisEPS_getRawHKDataMB(EPS_I2C_BUS_INDEX, &tlm_mb_raw, &cmd);
 		{
 			c_fileWrite(FILENAME_EPS_RAW_MB_TLM, &tlm_mb_raw);
-			printf("EPS_RAW_MB_TLM file was created successfully\n");
+			//printf("EPS_RAW_MB_TLM file was created successfully\n");
 		}
 		else
 		{
@@ -241,7 +241,7 @@ void TelemetrySaveEPS()
 		if (isis_eps__gethousekeepingeng__tm(EPS_I2C_BUS_INDEX, &tlm_mb_eng) == 0)//err = IsisEPS_getEngHKDataMB(EPS_I2C_BUS_INDEX, &tlm_mb_eng, &cmd);
 		{
 			c_fileWrite(FILENAME_EPS_RAW_MB_TLM, &tlm_mb_eng);
-			printf("EPS_RAW_MB_TLM file was created successfully\n");
+			//printf("EPS_RAW_MB_TLM file was created successfully\n");
 		}
 
 		else
@@ -254,7 +254,7 @@ void TelemetrySaveEPS()
 		if (isis_eps__gethousekeepingrawincdb__tm(EPS_I2C_BUS_INDEX,&tlm_cdb_raw) == 0)//int err = IsisEPS_getRawHKDataCDB(EPS_I2C_BUS_INDEX, brd, &tlm_cdb_raw, &cmd);
 		{
 			c_fileWrite(FILENAME_EPS_RAW_CDB_TLM, &tlm_cdb_raw);
-			printf("EPS_RAW_CDB_TLM file was created successfully\n");
+//			printf("EPS_RAW_CDB_TLM file was created successfully\n");
 		}
 		isis_eps__gethousekeepingengincdb__from_t tlm_cdb_eng;/// ieps_enghk_data_cdb_t tlm_cdb_eng;
 
@@ -469,7 +469,6 @@ void GetCurrentWODTelemetry(WOD_Telemetry_t *wod)
 		wod->volt_5V = hk_tlm.fields.vip_obc01.fields.volt;
 		wod->charging_power = hk_tlm_cdb.fields.batt_input.fields.power * 10;
 		wod->consumed_power = hk_tlm_cdb.fields.dist_input.fields.power * 10;
-
 		wod->bat_temp = hk_tlm.fields.temp2;
 		wod->mcu_temp = hk_tlm.fields.temp;
 
