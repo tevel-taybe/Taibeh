@@ -7,4 +7,6 @@ doxygen
 *.bin
 *.map
 *.siz
-
+*.log
+*.metadata
+*.metadata/
