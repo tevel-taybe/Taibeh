@@ -8,5 +8,5 @@ doxygen
 *.map
 *.siz
 *.log
-*.metadata
-*.metadata/
+.metadata
+**/.metadata
