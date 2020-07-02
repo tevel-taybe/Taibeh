@@ -79,8 +79,6 @@ int EPS_Conditioning()
 	{
 		EnterCriticalMode();
 	}
-
-
 	// discharging
 	/*
 	if (filtered_voltage > prev_filtered_voltage) {
@@ -143,6 +141,13 @@ int UpdateAlpha(float new_alpha)
 
 	alpha = new_alpha;
 	return 0;
+}
+void CMD_Reset_WTD(void)
+{
+	 isis_eps__watchdog__from_t response;
+	(void)isis_eps__watchdog__tm( EPS_I2C_BUS_INDEX, &response );
+	(void)response;
+
 }
 
 int UpdateThresholdVoltages(EpsThreshVolt_t *thresh_volts)

@@ -1,6 +1,8 @@
 #ifndef TM_MANAGMENT_H_
 #define TM_MANAGMENT_H_
 
+
+
 #include <hal/Boolean.h>
 #include <GlobalStandards.h>
 
@@ -95,10 +97,11 @@ FileSystemResult c_fileDeleteElements(char* c_file_name, time_unix from_time,
  */
 FileSystemResult c_fileRead(char* c_file_name, byte* buffer, int size_of_buffer,
 		time_unix from_time, time_unix to_time, int* read,time_unix* last_read_time);
-
+FileSystemResult c_fileGetSizeOfElement(char* c_file_name,int* element_size);
 //print c_file for testing
 void print_file(char* c_file_name);
 FileSystemResult c_fileReset(char* c_file_name);
+
 int FS_test();
 void test_i();
 #endif /* TM_MANAGMENT_H_ */

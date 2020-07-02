@@ -5,6 +5,10 @@
 
 #include <hal/Timing/Time.h>
 #include <hal/errors.h>
+#include <hcc/api_fat.h>
+#include <GlobalStandards.h>
+#include <hcc/api_mdriver_atmel_mcipdc.h>
+#include <hcc/api_hcc_mem.h>
 
 #include <satellite-subsystems/IsisTRXVU.h>
 #include <satellite-subsystems/IsisAntS.h>
@@ -27,7 +31,7 @@
 #include "SubSystemModules/Communication/SatDataTx.h"
 #include "SubSystemModules/Communication/Beacon.h"
 #include "SubSystemModules/PowerManagment/EPSOperationModes.h"
-
+#include "Logger.h"
 
 extern time_unix		g_idle_end_time ;
 
@@ -38,8 +42,8 @@ xTaskHandle xDumpHandle = NULL;			 //task handle for dump task
 
 
 // defining  buffer for Dump
-#define dump_buffer_size  (96*10)
-static unsigned char dump_buffer[dump_buffer_size];
+#define dump_buffer_size  (4096)
+char dump_buffer[dump_buffer_size];
 #define TAIBEH   3
 
 
@@ -152,7 +156,7 @@ CommandHandlerErr TRX_Logic() {
 void FinishDump(dump_arguments_t *task_args,unsigned char *buffer, ack_subtype_t acktype,
 		unsigned char *err, unsigned int size) {
 
-	SendAckPacket(acktype, task_args->cmd, err, size);
+	SendAckPacket(acktype, &(task_args->cmd), err, size);
 	if (NULL != task_args) {
 		free(task_args);
 	}
@@ -203,64 +207,6 @@ Boolean CheckDumpAbort()
 }
 
 
-////void DumpTask(void *args)
-//{
-//
-//	  if (NULL == args)
-//	   {
-//		FinishDump(NULL, NULL, ACK_DUMP_ABORT, NULL, 0);
-//		return;
-//	   }
-//	dump_arguments_t *task_args = (dump_arguments_t *) args;
-//	sat_packet_t dump_tlm = { 0 };
-//	int err = 0;
-//	int availFrames = 1;
-//	unsigned int num_of_packets = 0;
-//	unsigned int size_of_element = 0;
-//	time_unix last_time_read = 0;
-//	int num_of_tlm_elements_read = 0;
-//	char filename[MAX_F_FILE_NAME_SIZE] = { 0 };
-//	SendAckPacket(ACK_DUMP_START, &task_args->cmd,NULL, 0);
-//
-//	err = GetTelemetryFilenameByType((tlm_type) task_args->dump_type,filename);
-//	if (err)
-//	{
-//		FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, (unsigned char*) &err,sizeof(err));
-//		return;
-//	}
-//	printf("###############################################   got the TLM TYPE    ##########################");
-//
-//	c_fileRead(filename, dump_buffer, dump_buffer_size, task_args->t_start, task_args->t_end, &num_of_tlm_elements_read, &last_time_read);
-//	num_of_packets = num_of_tlm_elements_read; // each packet will be max 200 bytes ( 00c8)
-//
-//	//SendAckPacket(ACK_DUMP_START, task_args->cmd,(unsigned char*) &num_of_packets, sizeof(num_of_packets));
-//
-//	unsigned int currPacketSize;
-//	unsigned int totalDataLeft = dump_buffer_size;
-//	unsigned int i = 0;
-//	while (i < num_of_packets)
-//	{
-//
-//		if (CheckDumpAbort() || !CheckTransmitionAllowed())
-//			return FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, NULL, 0);
-//
-//		currPacketSize = totalDataLeft < MAX_COMMAND_DATA_LENGTH ? totalDataLeft : MAX_COMMAND_DATA_LENGTH;
-//		AssembleCommand(dump_buffer + i*size_of_element, currPacketSize,(char) DUMP_SUBTYPE, (char) (task_args->dump_type),task_args->cmd->ID,   &dump_tlm);
-//
-//		err = TransmitSplPacket(&dump_tlm, &availFrames);
-//			if (err)
-//				return FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, NULL, 0);
-//				if (availFrames != NUM_OF_Available_Frames )
-//				{
-//				i++;
-//				totalDataLeft -= currPacketSize;
-//				}
-//			if (availFrames == 0 || availFrames == NUM_OF_Available_Frames)
-//			vTaskDelay(10);
-//	 }
-//	FinishDump(task_args, dump_buffer, ACK_DUMP_FINISHED, NULL, 0);
-//}
-
 void DumpTask(void *args)
 {
 
@@ -271,56 +217,92 @@ void DumpTask(void *args)
 	dump_arguments_t *task_args = (dump_arguments_t *) args;
 	sat_packet_t dump_tlm = { 0 };
 	int err = 0;
+	int ack_code = ACK_DUMP_FINISHED;
+	int End_Of_Data = 0;
+	FileSystemResult result = 0;
+	int finish_read = 0;
 	int availFrames = 1;
 	unsigned int num_of_packets = 0;
-	unsigned int size_of_element = 0;
-	time_unix last_time_read = 0;
+	unsigned int num_packets_read = 0; //number of packets read from buffer in each time
+	unsigned int size_of_elements_include_time_stamp = 0;
+	unsigned int size_of_element=0;
+	unsigned int num_of_elements =0;
+	time_unix last_sent_time = task_args->t_start;// from this time we need to start the next search
+	time_unix last_time_read = 0; //
 	int num_of_tlm_elements_read = 0;
+	unsigned int total_packets_read = 0; // the amount of all packets read from the buffer
 	char filename[MAX_F_FILE_NAME_SIZE] = { 0 };
+	unsigned char *buffer = NULL;
+	buffer = dump_buffer;
+// ============================================================================================
 
 	err = GetTelemetryFilenameByType((tlm_type) task_args->dump_type,filename);
-		if (err)
-		{
-		FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, (unsigned char*) &err,sizeof(err));
-		return;
-		}
-
- //err = fileRead("LOG0.tlm", byte* buffer, int size_of_buffer, time_unix from_time, time_unix to_time, int* read, int element_size)
-//	err = fileRead("LOG0.TLM", dump_buffer, dump_buffer_size, task_args->t_start, task_args->t_end, &num_of_tlm_elements_read, 92);
-	//err =   (filename, dump_buffer, dump_buffer_size, task_args->t_start, task_args->t_end, &num_of_tlm_elements_read, &last_time_read);
-
-	num_of_packets = dump_buffer_size / MAX_COMMAND_DATA_LENGTH; // each packet will be max 200 bytes ( 00c8)
-	if (dump_buffer_size % MAX_COMMAND_DATA_LENGTH)
-		num_of_packets++;
-
-	SendAckPacket(ACK_DUMP_START, task_args->cmd,(unsigned char*) &num_of_packets, sizeof(num_of_packets));
-
-	unsigned int currPacketSize;
-	unsigned int totalDataLeft = dump_buffer_size;
-	unsigned int i = 0;
-	while (i < num_of_packets)
+	if (err)
 	{
-
-		if (CheckDumpAbort() || !CheckTransmitionAllowed())
-		return FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, NULL, 0);
-
-		currPacketSize = totalDataLeft < MAX_COMMAND_DATA_LENGTH ? totalDataLeft : MAX_COMMAND_DATA_LENGTH;
-		AssembleCommand(dump_buffer + i*size_of_element, currPacketSize,(char) DUMP_SUBTYPE, (char) (task_args->dump_type),task_args->cmd->ID,   &dump_tlm);
-
-		err = TransmitSplPacket(&dump_tlm, &availFrames);
-		if (err)
-			return FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, NULL, 0);
-
-		if (availFrames != NUM_OF_Available_Frames )
-		{
-				i++;
-				totalDataLeft -= currPacketSize;
-		}
-		if (availFrames == 0 || availFrames == NUM_OF_Available_Frames)
-			vTaskDelay(150);
+		//TODO: check if we need to Write to Log file
+		FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, (unsigned char*) &err,sizeof(err));
+		return ;
 	}
-	FinishDump(task_args, dump_buffer, ACK_DUMP_FINISHED, NULL, 0);
-}
+	if (c_fileGetSizeOfElement(filename,size_of_element)!= FS_SUCCSESS)
+	{
+		//return ;
+		//TODO: write to log
+	}
+	size_of_elements_include_time_stamp = size_of_element + sizeof(time_unix);
+	//TODO:should add to the log ( filename, size_of_element, (start time)task_args->t_start, (ens time)task_args->t_end
+
+	//f_managed_enterFS();// TODO: check if needed
+
+	//=================================
+	SendAckPacket(ACK_DUMP_START, &(task_args->cmd),(unsigned char*) &num_of_elements, sizeof(num_of_elements));
+
+
+	while(0 == End_Of_Data)
+	{
+		num_packets_read = 0;
+
+		// TODO: need to check with other groups the issue of resolution
+		result = c_fileRead(filename, buffer, dump_buffer_size,last_sent_time, task_args->t_end, &num_packets_read, &last_time_read);
+		if(result != FS_BUFFER_OVERFLOW)
+		{
+			// TODO: consider writting the error to Log
+			End_Of_Data = 1;
+		}
+		last_sent_time = last_time_read;
+		total_packets_read += num_packets_read;
+		for(int i = 0; i < num_packets_read; i++)
+		{
+			if (CheckDumpAbort() || !CheckTransmitionAllowed())
+			{
+				wlog(CNAME_TRXVU, LOG_INFO, -1, "Dump Abort request \n");
+				ack_code = ACK_DUMP_ABORT;
+				goto All_Done;
+			}
+			if (0 == availFrames)
+			{
+				vTaskDelay(20);
+			}
+			AssembleCommand((unsigned char*)buffer + size_of_elements_include_time_stamp * i, size_of_elements_include_time_stamp,
+					(char) DUMP_SUBTYPE, (char) (task_args->dump_type),task_args->cmd.ID, &dump_tlm);
+			err = TransmitSplPacket(&dump_tlm, &availFrames);
+			if(err != 0)
+			{
+				wlog(CNAME_TRXVU, LOG_INFO, err, "Transmitting Data Dump \n");
+			}
+			if((i+1)%10 == 0)
+				vTaskDelay(50);
+		}
+	}
+	All_Done:
+		//f_managed_releaseFS();
+		f_releaseFS();
+		FinishDump(task_args, buffer, ack_code, NULL, 0);
+		while(1)
+		{
+			wlog(CNAME_TRXVU, LOG_INFO, 0, "Looping.....\n");
+			vTaskDelay(5000);
+		};
+}// ***************************************************     DONE      *****************************
 
 int DumpTelemetry(sat_packet_t *cmd) {
 	if (NULL == cmd) {
@@ -329,21 +311,16 @@ int DumpTelemetry(sat_packet_t *cmd) {
 
 	dump_arguments_t *dmp_pckt = malloc(sizeof(*dmp_pckt));
 	unsigned int offset = 0;
-
-	dmp_pckt->cmd = cmd;
-
-	memcpy(&dmp_pckt->dump_type, cmd->data, sizeof(dmp_pckt->dump_type));
+	//dmp_pckt->cmd = cmd;
+	memcpy(&(dmp_pckt->dump_type), &cmd->data[offset], sizeof(dmp_pckt->dump_type));
 	offset += sizeof(dmp_pckt->dump_type);
-
-
-	memcpy(&dmp_pckt->t_start, cmd->data + offset, sizeof(dmp_pckt->t_start));
+	memcpy(&(dmp_pckt->t_start), &cmd->data + offset, sizeof(dmp_pckt->t_start));
 	offset += sizeof(dmp_pckt->t_start);
-
-	memcpy(&dmp_pckt->t_end, cmd->data + offset, sizeof(dmp_pckt->t_end));
+	memcpy(&(dmp_pckt->t_end), &cmd->data + offset, sizeof(dmp_pckt->t_end));
 	offset += sizeof(dmp_pckt->t_end);
-
+	memcpy(&(dmp_pckt->cmd),cmd,sizeof(*cmd));
 	//memcpys(&dmp_pckt->delog, cmd->data + offset, sizeof(dmp_pckt->delog));
-	dmp_pckt->delog = 0;
+	//dmp_pckt->delog = 0;
 
 	if (xSemaphoreTake(xDumpLock,SECONDS_TO_TICKS(1)) != pdTRUE) { /// TODO : need to be checked with Edan
 		return E_GET_SEMAPHORE_FAILED;

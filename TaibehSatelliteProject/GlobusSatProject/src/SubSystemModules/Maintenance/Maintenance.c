@@ -28,11 +28,10 @@ Boolean CheckExecutionTime(time_unix prev_time, time_unix period)
 		wlog(CNAME_GENERAL,LOG_ERROR,err,"Error Reading Unix-time\n");
 		return FALSE;
 	}
-	period =1 ;
+	//period =1 ; TODO: for debugging purposes should be removed
 	printf("curr = %d\n",curr);
 	printf("prev_time = %d\n",prev_time);
 	printf("period = %d\n",period);
-	//period=0;
 	if(curr - prev_time >= period)
 	{
 		printf("the current time is :  %d\n",curr);
@@ -227,7 +226,7 @@ void RedeployIfNeeded(time_unix curr_time)
 
 void Maintenance()//
 {
-	isis_eps__watchdog__from_t response;//keeping EPS watchDog up
+	isis_eps__watchdog__from_t response;//keeping EPS watchDog up [Adi] need to check if we really need this
 	(void)isis_eps__watchdog__tm( EPS_I2C_BUS_INDEX, &response );
 	(void)response;
 

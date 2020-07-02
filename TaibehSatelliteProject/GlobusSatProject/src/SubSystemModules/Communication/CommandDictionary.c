@@ -10,6 +10,8 @@
 #include <SubSystemModules/Housekepping/TelemetryCollector.h>
 #include <SubSystemModules/PowerManagment/EPS.h>
 #include "CommandDictionary.h"
+
+
 //#include "SubSystemModules/Communication/SubsystemCommands/EPS_Commands.h"
 //#include "SubSystemModules/Communication/SubsystemCommands/FS_Commands.h"
 //#include "TLM_management.h"
@@ -69,7 +71,9 @@ int trxvu_command_router(sat_packet_t *cmd) {
 	case SET_BEACON_CYCLE_TIME:
 		err = CMD_SetBeaconCycleTime(cmd);
 		break;
-
+	case GET_BEACON_CYCLE_TIME:
+		err = CMD_GetBeaconCycleTime(cmd);
+		break;
 	case GET_TX_UPTIME:
 		err = CMD_GetTxUptime(cmd);
 		break;
@@ -109,6 +113,7 @@ int trxvu_command_router(sat_packet_t *cmd) {
 
 	case SET_ARM_DISARM_ANTS_STATUS:
 		err = CMD_ArmDisArmAnt(cmd);
+		vTaskDelay(100);
 		break;
 
 //	case DIS_ARM_ANT:
@@ -122,7 +127,9 @@ int trxvu_command_router(sat_packet_t *cmd) {
 	case ANT_CANCEL_DEPLOY:
 		err = CMD_AntCancelDeployment(cmd);
 		break;
-
+	case ANT_AUTO_DEPLOY:
+		err = CMD_AntAutoDeploy(cmd);
+		break;
 	case UPLOAD_TIME:
 		err = CMD_Upload_Time(cmd);
 		break;
@@ -134,6 +141,12 @@ int trxvu_command_router(sat_packet_t *cmd) {
 		err = CMD_Echo(cmd);
 		break;
 
+	case Read_From_FRAM:
+		err = CMD_Read_FRAM(cmd);
+		break;
+	case Write_to_Fram:
+		err = CMD_Write_FRAM(cmd);
+		break;
 	default:
 		printf(" ********************Default comamnd is %dx %x\n",
 				(int) cmd->cmd_type, (int) cmd->cmd_subtype);
@@ -147,15 +160,16 @@ int trxvu_command_router(sat_packet_t *cmd) {
 }
 
 int eps_command_router(sat_packet_t *cmd) {
-	//TODO: finish 'eps_command_router'
 	int err = 0;
 
 	switch (cmd->cmd_subtype) {
-	case 0:
-		err = UpdateAlpha(*(float*) cmd->data);
-		SendErrorMSG(ACK_ERROR_MSG, ACK_UPDATE_EPS_ALPHA, cmd, err);
+//	case 0:// TODO: need to be deleted no need for it any more
+//		err = UpdateAlpha(*(float*) cmd->data);
+//		SendErrorMSG(ACK_ERROR_MSG, ACK_UPDATE_EPS_ALPHA, cmd, err);
+//		break;
+	case EPS_Reset_WTD:
+		CMD_Reset_WTD(cmd);
 		break;
-
 	default:
 		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;
@@ -235,9 +249,13 @@ int maintenance_command_router(sat_packet_t *cmd) {
 	switch (cmd->cmd_subtype) {
 	case I2C_Generic_CMD:
 		err = CMD_GenericI2C(cmd);
-
 		break;
-
+	case Restart_Fram_CMD:
+		CMD_RestartFram(cmd);
+		break;
+	case Get_Sat_Time:
+		err = CMD_GetSatTime(cmd);
+		break;
 	default:
 		SendAckPacket(ACK_UNKNOWN_SUBTYPE, cmd, NULL, 0);
 		break;

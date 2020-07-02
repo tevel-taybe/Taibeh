@@ -35,18 +35,21 @@
 
 #ifdef TESTING //configrutions  at src
 	#include "TestingDemos/MainTest.h"
+	printf("HELLLLLLOOOOOOOOO     WAHEEEEEEEEEBBBBBBBBBB");
 #else
 void taskMain()
 {
 	WDT_startWatchdogKickTask(10 / portTICK_RATE_MS, FALSE);
+
 	printf("entering to the init system \n");
 
-	InitSubsystems();
+	InitSubsystems();/// pw=wah1503ejm
 	printf("   ++++++++++++++++++++++++++++++++++++++++++++++++after the init system \n ");
-
 
 	while(TRUE)
 	{
+		fflush(stdin);
+
 		printf("looping..................................................................................................................\n");
 		wlog(CNAME_GENERAL, LOG_INFO, 0, "Looping.....\n");
 		int err = EPS_Conditioning();
@@ -59,6 +62,7 @@ void taskMain()
 		}
 		else
 		//TODO: printf("///////////////////////        EPS conditioning  .......   OK ...... /////////////////////////// \n");
+		fflush(stdin);
 		printf("no erro in eps99999999999999999999999999999999999999999999999999999999999999999");
 		err = TRX_Logic();
 		printf(" ************* %%%%%%%%%%  @@@@@@@@@     ###### returned TRX result id %d\n",err);
@@ -67,6 +71,7 @@ void taskMain()
 			wlog(CNAME_TRXVU,LOG_ERROR,err,"Error in TRX Logic procedure.\n");
 
 		}
+		fflush(stdin);
 		printf(" TRX LOgic OK /////////////////////////////////////*****************/////////////////////////////////////////////////////////\n");
 		TelemetryCollectorLogic();
 

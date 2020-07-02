@@ -48,10 +48,10 @@
 
 #define UNIX_DEPLOY_DATE_JAN_D1_Y2020 {\
 .seconds = 0,		\
-.minutes = 0,		\
-.hours = 0,			\
-.day = 1,			\
-.date = 21,			\
+.minutes = 03,		\
+.hours = 12,			\
+.day = 4,			\
+.date = 23,			\
 .month = 6,			\
 .year = 20,			\
 .secondsOfYear = 0}

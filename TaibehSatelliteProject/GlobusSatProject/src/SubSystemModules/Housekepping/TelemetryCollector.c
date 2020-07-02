@@ -103,7 +103,9 @@ void TelemetryCollectorLogic()
 		{
 			tlm_last_save_time[eps_tlm] = curr;
 		}
-//TODO: need to add to the log file an error message
+		else
+			printf( "EPS last time was not saved properly seems to problem in reading current time" );
+		//TODO: need to add to the log file an error message
 	}
 
 	if (CheckExecutionTime(tlm_last_save_time[trxvu_tlm],tlm_save_periods[trxvu_tlm]))
@@ -113,7 +115,8 @@ void TelemetryCollectorLogic()
 		{
 			tlm_last_save_time[trxvu_tlm] = curr;
 		}
-
+		else
+			printf( "TRXVU last time was not saved properly seems to problem in reading current time" );
 		//TODO need to add to the log file an error message
 	}
 
@@ -123,8 +126,10 @@ void TelemetryCollectorLogic()
 		if (Time_getUnixEpoch(&curr) == 0)
 		{
 		   tlm_last_save_time[ant_tlm] = curr;
+		   printf(" ant last time saved properly");
 		}
-
+		else
+			printf( "ant last time was not saved properly seems to problem in reading current time" );
 		//TODO need to add to the log file an error message
 	}
 
@@ -135,7 +140,8 @@ void TelemetryCollectorLogic()
 		{
 			tlm_last_save_time[solar_panel_tlm] = curr;
 		}
-
+		else
+			printf( "solar P. last time was not saved properly seems to problem in reading current time" );
 		//TODO need to add to the log file an error message
 	}
 
@@ -146,7 +152,8 @@ void TelemetryCollectorLogic()
 		{
 			tlm_last_save_time[wod_tlm] = curr;
 		}
-
+		else
+			printf( "WOD last time was not saved properly seems to problem in reading current time" );
 		 //TODO need to add to the log file an error message
 	}
 	/*if (CheckExecutionTime(tlm_last_save_time[operational_data_tlm],tlm_save_periods[operational_data_tlm]))

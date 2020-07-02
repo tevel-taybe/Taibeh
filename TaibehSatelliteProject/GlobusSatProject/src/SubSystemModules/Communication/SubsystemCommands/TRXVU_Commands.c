@@ -24,6 +24,7 @@ int CMD_StartDump(sat_packet_t *cmd)
 	return err;
 }
 
+
 int CMD_StopDump(sat_packet_t *cmd)
 {
 	(void) cmd;
@@ -103,7 +104,17 @@ int CMD_SetBeaconCycleTime(sat_packet_t *cmd)
 
 	return err;
 }
+int CMD_GetBeaconCycleTime(sat_packet_t *cmd)
+{
+	int err =0;
+	time_unix Beacon_time = 0;
+	ISIStrxvuBitrate bitrate = 0;
+	err = FRAM_read(&bitrate, BEACON_BITRATE_CYCLE_ADDR, BEACON_BITRATE_CYCLE_SIZE);
+	err+= FRAM_read(&Beacon_time,BEACON_BITRATE_CYCLE_ADDR,BEACON_BITRATE_CYCLE_SIZE );
+		TransmitDataAsSPL_Packet(cmd,(unsigned char*)&bitrate, sizeof(bitrate));
 
+		return err;
+}
 int CMD_GetBeaconInterval(sat_packet_t *cmd)
 {
 	int err = 0;
@@ -122,8 +133,7 @@ typedef struct SetBeaconReply{
 } SetBeaconReply;
 
 int CMD_SetBeaconInterval(sat_packet_t *cmd)
-{
-	SetBeaconReply reply = {0, 0};
+{	SetBeaconReply reply = {0, 0};
 
 	memcpy(&reply.interval,  &cmd->data, sizeof(reply.interval));
 	printf("cmd setbeacon interval start >>>>>>>\n");
@@ -175,7 +185,7 @@ int CMD_Re_Deploy_Ants(sat_packet_t *cmd)// Tillawi
 	IsisAntS_setArmStatus(ISIS_TRXVU_I2C_BUS_INDEX, isisants_sideB, isisants_arm);
 	int errB = IsisAntS_autoDeployment(ISIS_TRXVU_I2C_BUS_INDEX,  isisants_sideB, ANTENNA_DEPLOYMENT_TIMEOUT);
 	return (!errA || !errB) ? 0 : errB;
-
+///TODO: perform disarm for A and B  need to call the funtion
 }
 
 int CMD_Upload_Time(sat_packet_t *cmd)// Danya
@@ -188,13 +198,14 @@ int CMD_Upload_Time(sat_packet_t *cmd)// Danya
 	memcpy(&required_time,cmd->data,sizeof(required_time));
 	int err =Time_setUnixEpoch(required_time);
 	if (0!= err)
-	{
+	{//TODO: should be replaced by sending the err to the GS
 	 printf( "time was not set\n");
 	}
-	else err= FRAM_write((unsigned char*)&required_time,MOST_UPDATED_SAT_TIME_ADDR,MOST_UPDATED_SAT_TIME_SIZE);
-	{ // writing new time to the FRAM
+	else
+	{ // writing new time to the FRAM do we need it ????
+		err= FRAM_write((unsigned char*)&required_time,MOST_UPDATED_SAT_TIME_ADDR,MOST_UPDATED_SAT_TIME_SIZE);
 		if (0!=err)
-		 {
+		 {//TODO: should be replaced by sending the err to the GS
 		  # ifdef TESTING
 		  printf("an error occurred updating the time in the FRAM , Error = %d \n",err);
 		  #endif
@@ -203,6 +214,54 @@ int CMD_Upload_Time(sat_packet_t *cmd)// Danya
 	return 0;
 
 }
+int CMD_Write_FRAM(sat_packet_t *cmd)
+{
+	unsigned int Data_To_write ;
+	unsigned short Required_size ;
+	unsigned short Required_address ;
+	unsigned int offset = 0;
+	if (cmd == NULL || cmd->data == NULL)
+	 {
+		return E_INPUT_POINTER_NULL;
+	 }
+	 memcpy(&Required_address, cmd->data, sizeof(Required_address));
+	 offset = offset + sizeof(Required_address);
+	 memcpy(&Required_size, cmd->data + offset , sizeof(Required_size));
+	 offset = offset + sizeof(Required_size);
+	 memcpy(&Data_To_write, cmd->data + offset , sizeof(Data_To_write));
+	 int err = FRAM_write((unsigned char*) &Data_To_write, Required_address, Required_size);
+	 if (0 != err)
+     {
+		 TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err,sizeof(err));
+
+		 return err;
+     }
+	 return err;
+}
+
+int CMD_Read_FRAM(sat_packet_t *cmd)
+{
+	 unsigned int Data_To_Send ;
+     unsigned short Required_size ;
+     unsigned short Required_address ;
+     unsigned int offset = 0;
+     if (cmd == NULL || cmd->data == NULL)
+     {
+    	 return E_INPUT_POINTER_NULL;
+     }
+     memcpy(&Required_address, cmd->data, sizeof(Required_address));
+     offset = offset + sizeof(Required_address);
+     memcpy(&Required_size, cmd->data + offset , sizeof(Required_size));
+     int err = FRAM_read((unsigned char*) &Data_To_Send, Required_address, Required_size);
+     if (0 != err)
+     {
+    	 TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err,sizeof(err));
+    	 //TODO: write to log
+    	 return err;
+     }
+     TransmitDataAsSPL_Packet(cmd, (unsigned char*) &Data_To_Send,sizeof(Data_To_Send));
+     return err;
+  }
 
 int CMD_Echo(sat_packet_t *cmd)
 {
@@ -234,8 +293,13 @@ int CMD_GetTxUptime(sat_packet_t *cmd)
 	int err = 0;
 	time_unix uptime = 0;
 	err = IsisTrxvu_tcGetUptime(ISIS_TRXVU_I2C_BUS_INDEX, (unsigned int*)&uptime);
+	if (0 != err)
+	{
+		 TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err,sizeof(err));
+		 //TODO: write to log
+		 return err;
+	}
 	TransmitDataAsSPL_Packet(cmd, (unsigned char*)&uptime, sizeof(uptime));
-
 	return err;
 }
 
@@ -244,8 +308,13 @@ int CMD_GetRxUptime(sat_packet_t *cmd)
 	int err = 0;
 	time_unix uptime = 0;
 	err = IsisTrxvu_rcGetUptime(ISIS_TRXVU_I2C_BUS_INDEX,(unsigned int*) &uptime);
+	if (0 != err)
+    {
+		 TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err,sizeof(err));
+		 //TODO: write to log
+		 return err;
+	}
 	TransmitDataAsSPL_Packet(cmd, (unsigned char*) &uptime, sizeof(uptime));
-
 	return err;
 }
 
@@ -313,16 +382,12 @@ int CMD_AntGetArmStatus(sat_packet_t *cmd)
 	}
 	ISISantsSide ant_side;
 	memcpy(&ant_side, cmd->data, sizeof(ant_side));
-
-
 	ISISantsStatus status;
 	int err = IsisAntS_getStatusData(ISIS_TRXVU_I2C_BUS_INDEX, ant_side, &status);
 	if(0 == err)
 	{
-		//status.fields.ant1Undeployed && status.fields.ant2Deploying /// explanation about using union
 		TransmitDataAsSPL_Packet(cmd, (unsigned char*) &status, sizeof(status));
 	}
-
 	return err;
 }
 
@@ -332,13 +397,20 @@ int CMD_ArmDisArmAnt(sat_packet_t *cmd)//TODO: need to be completed
 	{
 	 return E_INPUT_POINTER_NULL;
 	}
-	int err;
+
+	int err = 0;
 	ISISantsSide Req_Side = cmd->data[0];
 	ISISantsArmStatus Req_status = cmd->data[1];
 	err= IsisAntS_setArmStatus(ISIS_TRXVU_I2C_BUS_INDEX, Req_Side,  Req_status);
 	if(0!= err)
-	{
+	{	//TODO: printf command should be removed
+		printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%*****************************&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+		printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%*****************************&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		printf("error in %s on side %s\n", (Req_status==0XAD) ? "Arm" :"Disarm",(Req_Side==0x00)? "A":"B");
+		printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%*****************************&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+		printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%*****************************&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+		TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err,sizeof(err));
+		//TODO: write to log
 	}
 
 	return err;
@@ -350,8 +422,6 @@ int CMD_DisArmAnt(sat_packet_t *cmd)//TODO: need to be completed
 	{
 		 return E_INPUT_POINTER_NULL;
 	}
-
-
 	return 0;
 }
 
@@ -364,7 +434,28 @@ int CMD_AntGetUptime(sat_packet_t *cmd)
 	err = IsisAntS_getUptime(ISIS_TRXVU_I2C_BUS_INDEX, ant_side,(unsigned int*) &uptime);
 	return err;
 }
+//*!
+// * 	Execute the automatic deployment sequence of the ISIS Antenna Systems
+// *
+// * 	@param[in]  index index of ISIS Antenna Systems I2C bus address
+// *	@param[in]  side Antenna Systems side
+// *	@param[in]  deploymentTime maximum deployment timeout of the activation in seconds
+// * 	@return     Error code according to <hal/errors.h>
+// */
+//int IsisAntS_autoDeployment(unsigned char index, ISISantsSide side, unsigned char deploymentTime);
 
+int CMD_AntAutoDeploy(sat_packet_t *cmd)
+{
+	time_unix deploymentTime = 0;
+	int offset = 0;
+	int err = 0;
+	ISISantsSide ant_side;
+	memcpy(&ant_side, cmd->data, sizeof(ant_side));
+	offset += sizeof(ant_side);
+	memcpy(&deploymentTime, cmd->data + offset, sizeof(deploymentTime));
+	err = IsisAntS_autoDeployment(ISIS_TRXVU_I2C_BUS_INDEX,ant_side,deploymentTime);
+	return err;
+}
 int CMD_AntCancelDeployment(sat_packet_t *cmd)
 {
 	int err = 0;

@@ -2,6 +2,7 @@
 #include <hcc/api_hcc_mem.h>
 #include <hcc/api_fat.h>
 
+
 #include <hal/Storage/FRAM.h>
 #include <hal/Timing/Time.h>
 
@@ -145,7 +146,6 @@ FileSystemResult c_fileCreate(char* c_file_name, int size_of_element) {
 			{
 		return FS_FRAM_FAIL;
 	}
-
 	return FS_SUCCSESS;
 }
 //write element with timestamp to file
@@ -162,8 +162,8 @@ static void writewithEpochtime(F_FILE* file, byte* data, int size,
 	f_close(file); /* data is also considered safe when file is closed */
 }
 // get C_FILE struct from FRAM by name
-static Boolean get_C_FILE_struct(char* name, C_FILE* c_file,
-		unsigned int *address) {
+static Boolean get_C_FILE_struct(char* name, C_FILE* c_file, unsigned int *address)
+{
 	int i;
 	unsigned int c_file_address = 0;
 	int err_read = 0;
@@ -306,6 +306,19 @@ FileSystemResult c_fileDeleteElements(char* c_file_name, time_unix from_time,
 	}
 	return FS_SUCCSESS;
 }
+
+FileSystemResult c_fileGetSizeOfElement(char* c_file_name,int* element_size)
+{
+	C_FILE c_file;
+	unsigned int addr;//FRAM ADDRESS
+	if(get_C_FILE_struct(c_file_name,&c_file,&addr)!=TRUE)//get c_file
+	{
+		return FS_NOT_EXIST;
+	}
+	*element_size = c_file.size_of_element;
+	return FS_SUCCSESS;
+}
+
 FileSystemResult fileRead(char* c_file_name, byte* buffer, int size_of_buffer,
 		time_unix from_time, time_unix to_time, int* read, int element_size) {
 	*read = 0;

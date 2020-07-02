@@ -63,6 +63,7 @@ typedef enum __attribute__ ((__packed__)) trxvu_subtypes_t
 	SET_BEACON_INTERVAL = 	     0x08,	//0b00001000
 	SET_BAUD_RATE = 		     0x09,	//0b00011001
 	SET_BEACON_CYCLE_TIME =	     0x10,	//0b00001010
+	GET_BEACON_CYCLE_TIME =      0x37,
 	GET_TX_UPTIME = 		     0x11,	//0b00010001
 	GET_RX_UPTIME = 		     0x12,	//0b00010010
 	ADD_DELAYED_COMMAND_CMD=     0x13,	//0b00010011
@@ -74,6 +75,7 @@ typedef enum __attribute__ ((__packed__)) trxvu_subtypes_t
 	ANT_GET_ARM_STATUS = 	     0x19,	//0b00011001
 	ANT_GET_UPTIME =		     0x20,	//0b00100000
 	ANT_CANCEL_DEPLOY = 	     0x21,	//0b00100001
+	ANT_AUTO_DEPLOY = 			 0x38,
 	FORCE_ABORT_DUMP_SUBTYPE =   0x22,  //0b00100010
 	DELETE_DUMP_TASK =           0x23,	//0b00100011
 	ECHO_SUBTYPE =               0x24,
@@ -87,6 +89,8 @@ typedef enum __attribute__ ((__packed__)) trxvu_subtypes_t
 	SET_ARM_DISARM_ANTS_STATUS = 0x32,
 	UPLOAD_TIME =      			 0x33, 	//0b00110011
 	RE_DEPLOY_ANTS = 			 0X34,
+	Read_From_FRAM =             0X35,
+	Write_to_Fram =              0x36,
 	LAST_trxvu
 
 }trxvu_subtypes_t;
@@ -107,6 +111,7 @@ typedef enum __attribute__ ((__packed__)) eps_subtypes_t
 	Solar_Panel_Get_State = 		0x11,
 	Set_Heater_Temp =   			0x12,
 	EPS_NOP_Operation =				0x13,
+	EPS_Reset_WTD     =             0x14,
 	LAST_eps
 }eps_subtypes_t;
 
@@ -152,6 +157,7 @@ typedef enum __attribute__ ((__packed__)) maintenance_subtypes_t
 	FS_reset=							0x20,
 	Dummy_Func=							0x21,
 	I2C_Generic_CMD = 					0x22, //0b10101010
+	Restart_Fram_CMD =					0x23,
 	LAST_maintenance
 
 }maintenance_subtypes_t;

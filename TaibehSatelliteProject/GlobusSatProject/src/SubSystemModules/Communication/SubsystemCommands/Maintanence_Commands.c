@@ -29,6 +29,20 @@
 
 #define RESET_KEY 0xA6 // reset key to should be set to 0xA6 to cause reset , otherwise the command will be rejected
 
+int CMD_RestartFram(sat_packet_t *cmd)
+{
+	//int err = 0;
+	void FRAM_stop(void);
+	vTaskDelay(5);
+	int err = 0;
+	err = FRAM_start();
+    if( 0 != err)
+    {
+    	TransmitDataAsSPL_Packet(cmd, (unsigned char*) &err, sizeof(err));
+    }
+	return err;
+}
+
 int CMD_GenericI2C(sat_packet_t *cmd)
 {
 	if (cmd == NULL || cmd->data == NULL) {

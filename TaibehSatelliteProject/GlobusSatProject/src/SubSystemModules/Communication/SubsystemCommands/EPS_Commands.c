@@ -144,24 +144,9 @@ int CMD_EPS_ResetWDT(sat_packet_t *cmd)
 	(void)cmd;
 	int err = 0;
 #ifdef ISISEPS
-
-	/*!
-	 *	Resets the watchdog timer keeping the system from performing a reset.
-	 *
-	 *	@param [out] Response received from subsystem.
-	 * 	@return ISIS_EPS_ERR_t
-	 */
-	//int isis_eps__watchdog__tm( uint8_t index, isis_eps__watchdog__from_t *response );
-
-
 	isis_eps__watchdog__from_t reponse;
-	//ieps_statcmd_t ieps_cmd;
-	err = isis_eps__watchdog__tm(EPS_I2C_BUS_INDEX,&reponse); // err = IsisEPS_resetWDT(EPS_I2C_BUS_INDEX, &ieps_cmd);
+	err = isis_eps__watchdog__tm(EPS_I2C_BUS_INDEX,&reponse);
 #endif
-#ifdef GOMEPS
-	//TODO:
-#endif
-
 	return err;
 }
 

@@ -133,6 +133,9 @@ int StartFRAM()
 	return error;
 }
 
+
+
+
 int StartI2C()
 {
 
@@ -148,26 +151,7 @@ int StartSPI()
 }
 
 int StartTIME()
-/*
- {
-int error = 0;
-Time expected_deploy_time = UNIX_DATE_JAN_D1_Y2000;
 
-
-error = Time_start(&expected_deploy_time, 0);
-if (0 != error)
-{
-return error;
-}
-time_unix time_before_wakeup = 0;
-if (!isFirstActivation()) {
-FRAM_read((char*) &time_before_wakeup,MOST_UPDATED_SAT_TIME_ADDR, MOST_UPDATED_SAT_TIME_SIZE);
-
-Time_setUnixEpoch(time_before_wakeup);
-}
-return 0;
-}
- */
 {
 	int error = 0;
 	Time expected_deploy_time = UNIX_DEPLOY_DATE_JAN_D1_Y2020;
@@ -176,11 +160,12 @@ return 0;
 		return error;
 	}
 	time_unix time_before_wakeup = 0;
-	Boolean isFirst_Activation=0;
-	if (!isFirst_Activation) { //if (!isFirst_Activation())
+	Boolean isFirst_Activation=0;// TODO:need to be deleted
+	if (!isFirst_Activation) { //TODO : original command if (!isFirst_Activation())
 		FRAM_read((unsigned char*) &time_before_wakeup,MOST_UPDATED_SAT_TIME_ADDR, MOST_UPDATED_SAT_TIME_SIZE);
 
 		Time_setUnixEpoch(time_before_wakeup);
+
 	}
 	return 0;
 }

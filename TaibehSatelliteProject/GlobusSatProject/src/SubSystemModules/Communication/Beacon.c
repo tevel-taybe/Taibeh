@@ -24,6 +24,7 @@ time_unix g_beacon_interval_time = 0;			// seconds between each beacon
 unsigned char g_current_beacon_period = 0;		// marks the current beacon cycle(how many were transmitted before change in baud)
 unsigned char g_beacon_change_baud_period = 0;	// every 'g_beacon_change_baud_period' beacon will be in 1200Bps and not 9600Bps
 //ISIStrxvuBitrateStatus g_tx_bitrate = trxvu_bitrate_9600;
+
 int Beacon_SetInterval(time_unix interval)
 {
 	int err = FRAM_write((unsigned char*) &interval, BEACON_INTERVAL_TIME_ADDR, BEACON_INTERVAL_TIME_SIZE);
