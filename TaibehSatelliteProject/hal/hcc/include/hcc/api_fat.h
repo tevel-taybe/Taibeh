@@ -643,11 +643,11 @@ int fm_get_oem ( int drivenum, char * str, long maxlen );
 int f_enterFS ( void );
 void f_releaseFS ( void );
 #endif
-int f_managed_releaseFS()
-{
-	f_releaseFS();
-	return 0;
-}
+//static int f_managed_releaseFS()
+//{
+//	f_releaseFS();
+//	return 0;
+//}
 #if HCC_UNICODE
 int fm_wgetcwd ( wchar * buffer, int maxlen );
 int fm_wgetdcwd ( int drivenum, wchar * buffer, int maxlen );
