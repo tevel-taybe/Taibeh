@@ -296,12 +296,17 @@ void DumpTask(void *args)
 	All_Done:
 		//f_managed_releaseFS();
 		f_releaseFS();
-		FinishDump(task_args, buffer, ack_code, NULL, 0);
-		while(1)
-		{
-			wlog(CNAME_TRXVU, LOG_INFO, 0, "Looping.....\n");
-			vTaskDelay(5000);
-		};
+
+		// send ack that we finished?
+		SendAckPacket(ack_code, &(task_args->cmd), NULL, 0);
+		if (NULL != task_args) {
+			free(task_args);
+		}
+		if (NULL != xDumpLock) {
+			xSemaphoreGive(xDumpLock);
+		}
+
+		vTaskDelete(NULL);
 }// ***************************************************     DONE      *****************************
 
 int DumpTelemetry(sat_packet_t *cmd) {
