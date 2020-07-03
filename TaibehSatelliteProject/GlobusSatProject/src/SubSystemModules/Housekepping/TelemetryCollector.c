@@ -49,9 +49,6 @@ int GetTelemetryFilenameByType(tlm_type tlm_type, char filename[MAX_F_FILE_NAME_
 	case tlm_eps_raw_mb:
 		strcpy(filename,FILENAME_EPS_RAW_MB_TLM);
 		break;
-	/*case tlm_operation_data:
-		strcpy(filename,FILENAME_Operational_DATA_TLM);
-		break;*/
 	case tlm_eps_eng_mb:
 		strcpy(filename,FILENAME_EPS_ENG_MB_TLM);
 		break;
@@ -218,9 +215,6 @@ void TelemetryCreateFiles(Boolean8bit tlms_created[NUMBER_OF_TELEMETRIES])
 	res = c_fileCreate(FILENAME_LOG_TLM, sizeof(LogFileRecord));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_log_file);
 	printf("=================log file creation %d\n", res);
-
-
-
 
 }
 
@@ -424,27 +418,22 @@ void GetCurrentWODTelemetry(WOD_Telemetry_t *wod)
 
 	memset(wod,0,sizeof(*wod));
 	int err = 0;
-
 	FN_SPACE space = { 0 };
 	int drivenum = f_getdrive();
-// calculate and return the free space of SD
+//  calculate and return the free space of SD
 	err = f_getfreespace(drivenum, &space);
 	if (err == F_NO_ERROR){
 		wod->free_memory = space.free;
 		wod->corrupt_bytes = space.bad;
 	}
+
 	//TODO : add message to log file
 	time_unix current_time = 0;
 	Time_getUnixEpoch(&current_time);
 	wod->sat_time = current_time;
 #ifdef ISISEPS
-	//unsigned short temp;
-
-
-
 	int32_t panelTemp;
 	uint8_t status;
-
 	for (int i=0; i< NUMBER_OF_SOLAR_PANELS; i++ )
 	{
 		if ( ISIS_SOLAR_PANEL_STATE_AWAKE== IsisSolarPanelv2_getTemperature(i ,  &panelTemp,  &status ) )
@@ -455,18 +444,15 @@ void GetCurrentWODTelemetry(WOD_Telemetry_t *wod)
 
 	isis_eps__gethousekeepingeng__from_t hk_tlm = {{0}};
 	isis_eps__gethousekeepingengincdb__from_t hk_tlm_cdb = {{0}};
-
 	err =  isis_eps__gethousekeepingengincdb__tm(EPS_I2C_BUS_INDEX, &hk_tlm_cdb);
+	err += isis_eps__gethousekeepingeng__tm(EPS_I2C_BUS_INDEX, &hk_tlm);
+	if(0!=err)
+	{
+		printf("error in eps_housekeeping_tlm_collecting");
+		//TODO: write to log
+	}
 
-		err += isis_eps__gethousekeepingeng__tm(EPS_I2C_BUS_INDEX, &hk_tlm);
-		if(0!=err)
-		{
-			printf("error in eps_housekeeping");
-			//TODO: write to log
-		}
-
-		vTaskDelay(20);//TODO: should be deleted.
-
+	vTaskDelay(20);//TODO: should be deleted.
 	if(err == 0){
 		// TODO: need to make sure we are using the right params ( fields)
 		wod->vbat = hk_tlm_cdb.fields.volt_vd0;
