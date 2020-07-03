@@ -11,7 +11,7 @@
 #define SIZE_RXFRAME	200		///< max size of data field in uplink
 #define SIZE_TXFRAME	235		///< max size of data field in downlink
 #define NUM_OF_Available_Frames  255 //indication that the send buffer is full
-
+#define SIZE_DUMP_BUFFER (4096)
 
 typedef struct __attribute__ ((__packed__))
 {

@@ -32,7 +32,7 @@ Boolean CheckExecutionTime(time_unix prev_time, time_unix period)
 //	printf("curr = %d\n",curr);
 //	printf("prev_time = %d\n",prev_time);
 //	printf("period = %d\n",period);
-//	if(curr - prev_time >= period)
+	if(curr - prev_time >= period)
 	{
 		printf("the current time is :  %d\n",curr);
 		return TRUE;

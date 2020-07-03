@@ -243,7 +243,8 @@ void DumpTask(void *args)
 		FinishDump(task_args, dump_buffer, ACK_DUMP_ABORT, (unsigned char*) &err,sizeof(err));
 		return ;
 	}
-	if (c_fileGetSizeOfElement(filename,size_of_element)!= FS_SUCCSESS)
+	f_managed_enterFS();
+	if (c_fileGetSizeOfElement(filename,&size_of_element)!= FS_SUCCSESS)
 	{
 		//return ;
 		//TODO: write to log
@@ -260,9 +261,9 @@ void DumpTask(void *args)
 	while(0 == End_Of_Data)
 	{
 		num_packets_read = 0;
-
+		unsigned int resolution =1;
 		// TODO: need to check with other groups the issue of resolution
-		result = c_fileRead(filename, buffer, dump_buffer_size,last_sent_time, task_args->t_end, &num_packets_read, &last_time_read);
+		result = c_fileRead(filename, buffer, SIZE_DUMP_BUFFER,last_sent_time, task_args->t_end, &num_packets_read, &last_time_read,resolution);
 		if(result != FS_BUFFER_OVERFLOW)
 		{
 			// TODO: consider writting the error to Log
@@ -319,9 +320,9 @@ int DumpTelemetry(sat_packet_t *cmd) {
 	//dmp_pckt->cmd = cmd;
 	memcpy(&(dmp_pckt->dump_type), &cmd->data[offset], sizeof(dmp_pckt->dump_type));
 	offset += sizeof(dmp_pckt->dump_type);
-	memcpy(&(dmp_pckt->t_start), &cmd->data + offset, sizeof(dmp_pckt->t_start));
+	memcpy(&(dmp_pckt->t_start), &cmd->data[offset], sizeof(dmp_pckt->t_start));
 	offset += sizeof(dmp_pckt->t_start);
-	memcpy(&(dmp_pckt->t_end), &cmd->data + offset, sizeof(dmp_pckt->t_end));
+	memcpy(&(dmp_pckt->t_end), &cmd->data[offset], sizeof(dmp_pckt->t_end));
 	offset += sizeof(dmp_pckt->t_end);
 	memcpy(&(dmp_pckt->cmd),cmd,sizeof(*cmd));
 	//memcpys(&dmp_pckt->delog, cmd->data + offset, sizeof(dmp_pckt->delog));

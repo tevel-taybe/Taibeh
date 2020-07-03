@@ -217,8 +217,8 @@ int InitSubsystems()
 	err = StartTIME();
 	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling Start time function\n");
 
-    err = InitializeFS(isFirstActivation());
-	//err = InitializeFS(1);
+    //err = InitializeFS(isFirstActivation());
+	err = InitializeFS(1);
 	wlog(CNAME_GENERAL,LOG_ERROR,err,"Error in calling initialize FS function\n");
 
 	err = EPS_Init();

@@ -177,32 +177,27 @@ void TelemetryCreateFiles(Boolean8bit tlms_created[NUMBER_OF_TELEMETRIES])
 	// -- EPS files
 	res = c_fileCreate(FILENAME_EPS_RAW_MB_TLM,sizeof(isis_eps__gethousekeepingraw__from_t));//ieps_rawhk_data_mb_t
 	SAVE_FLAG_IF_FILE_CREATED(tlm_eps_raw_mb)
-	printf ("==========================      EPS_RAW_MB_TLM Created  ===========");
-
-
+	printf ("==========================      EPS_RAW_MB_TLM Created  ===========%d\n", res);
 	res = c_fileCreate(FILENAME_EPS_ENG_MB_TLM,sizeof(isis_eps__gethousekeepingeng__from_t));//ieps_enghk_data_mb_t
 	SAVE_FLAG_IF_FILE_CREATED(tlm_eps_eng_mb);
-	printf ("==========================      EPS_ENG_MB_TLM Created  ===========\n");
+	printf ("==========================      EPS_ENG_MB_TLM Created  ===========%d\n", res);
 	res = c_fileCreate(FILENAME_EPS_RAW_CDB_TLM,sizeof(isis_eps__gethousekeepingrawincdb__from_t));//ieps_rawhk_data_cdb_t
 	SAVE_FLAG_IF_FILE_CREATED(tlm_eps_raw_cdb);
-	printf ("==========================      EPS_RAW_CDB_TLM Created  ===========\n");
-
+	printf ("==========================      EPS_RAW_CDB_TLM Created  ===========%d\n", res);
 	res = c_fileCreate(FILENAME_EPS_ENG_CDB_TLM,sizeof(isis_eps__gethousekeepingengincdb__from_t));//ieps_enghk_data_cdb_t
 	SAVE_FLAG_IF_FILE_CREATED(tlm_eps_raw_cdb);
-	printf ("==========================      EPS_ENG_CDB_TLM Created   ===========\n");
+	printf ("==========================      EPS_ENG_CDB_TLM Created   ===========%d\n", res);
 
 	// -- TRXVU files
 	res = c_fileCreate(FILENAME_TX_TLM,sizeof(ISIStrxvuTxTelemetry));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_tx);
-
 	res = c_fileCreate(FILENAME_TX_REVC,sizeof(ISIStrxvuTxTelemetry_revC));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_tx_revc);
-
 	res = c_fileCreate(FILENAME_RX_TLM,sizeof(ISIStrxvuRxTelemetry));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_eps_raw_mb);
-
 	res = c_fileCreate(FILENAME_RX_REVC,sizeof(ISIStrxvuRxTelemetry_revC));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_rx_revc);
+
 	// -- ANT files
 	res = c_fileCreate(FILENAME_ANTENNA_TLM,sizeof(ISISantsTelemetry));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_antenna);
@@ -210,11 +205,17 @@ void TelemetryCreateFiles(Boolean8bit tlms_created[NUMBER_OF_TELEMETRIES])
 	//-- SOLAR PANEL files
 	res = c_fileCreate(FILENAME_SOLAR_PANELS_TLM,sizeof(int32_t)*ISIS_SOLAR_PANEL_COUNT);
 	SAVE_FLAG_IF_FILE_CREATED(tlm_solar);
-	printf ("==========================      SOLAR_PANELS_TLM Created   ===========\n");
+	printf ("==========================      SOLAR_PANELS_TLM Created   ===========%d\n", res);
 
+	// -- WOD files
+	res = c_fileCreate(FILENAME_WOD_TLM,sizeof(WOD_Telemetry_t));
+	SAVE_FLAG_IF_FILE_CREATED(tlm_wod);
+	printf("==========================      WOD_TLM Created   ===========%d\n", res);
+
+	// -- Log file
 	res = c_fileCreate(FILENAME_LOG_TLM, sizeof(LogFileRecord));
 	SAVE_FLAG_IF_FILE_CREATED(tlm_log_file);
-	printf("=================log file creation %d\n", res);
+	printf("=================log file created %d\n", res);
 
 }
 
@@ -420,6 +421,7 @@ void GetCurrentWODTelemetry(WOD_Telemetry_t *wod)
 	int err = 0;
 	FN_SPACE space = { 0 };
 	int drivenum = f_getdrive();
+
 //  calculate and return the free space of SD
 	err = f_getfreespace(drivenum, &space);
 	if (err == F_NO_ERROR){

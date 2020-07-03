@@ -4,8 +4,10 @@
 
 
 #include <hal/Boolean.h>
+#include <hcc/api_fat.h>
 #include <GlobalStandards.h>
 
+typedef unsigned int time_unix;
 #define MAX_F_FILE_NAME_SIZE 7
 #define FIRST_ELEMENT_IN_C_FILE 0
 #define LAST_ELEMENT_IN_C_FILE 0
@@ -15,9 +17,14 @@
 #define FS_FILE_ENDING_SIZE	3
 
 #ifndef FSFRAM
-#define FSFRAM 0x20000
+#define FSFRAM 0x10000
 #endif
+#define FS_MAX_OPENFILES	F_MAXFILES - 2
+#define FS_MAX_TASK_TETER	FAT_MAXTASK - 1
 
+#define COULD_NOT_TAKE_SEMAPHORE_ERROR 	-1
+#define COULD_NOT_GIVE_SEMAPHORE_ERROR 	-2
+#define FILE_NULL_ERROR					-3
 
 typedef enum
 {
@@ -30,12 +37,25 @@ typedef enum
 	FS_ALLOCATION_ERROR,
 	FS_FRAM_FAIL,
 	FS_FAT_API_FAIL,
-	FS_FAIL
+	FS_FAIL,
+	FS_COULD_NOT_CREATE_SEMAPHORE,
+	FS_COULD_NOT_TAKE_SEMAPHORE,
+	FS_COULD_NOT_GIVE_SEMAPHORE
 } FileSystemResult;
 
+int f_managed_enterFS();
+int f_managed_releaseFS();
+
+int f_managed_open(char* file_name, char* config, F_FILE** fileHandler);
+int f_managed_close(F_FILE** fileHandler);
+
+FileSystemResult reset_FRAM_FS();
+
+void sd_format(int index);
 /*
  *
  */
+void deleteDir(char* name, Boolean delete_folder);
 void delete_allTMFilesFromSD();
 /*!
  * Initializes the file system.
@@ -82,6 +102,22 @@ FileSystemResult c_fileWrite(char* c_file_name, void* element);
  */
 FileSystemResult c_fileDeleteElements(char* c_file_name, time_unix from_time,
 		time_unix to_time);
+/*!
+ * Find number of elements from "from_time" to "to_time"
+ * @param c_file_name the name of the c_file.
+ * @param from_time time of first element, FIRST_ELEMENT_IN_C_FILE to first element.
+ * @param to_time time of last element, LAST_ELEMENT_IN_C_FILE to last element.
+ * @return num of elements.
+ */
+int c_fileGetNumOfElements(char* c_file_name,time_unix from_time
+		,time_unix to_time);
+
+/*!
+ * Find size of a single element in the c_file
+ * @param c_file_name the name of the c_file.
+ * @return size of element.
+ */
+FileSystemResult c_fileGetSizeOfElement(char* c_file_name,int* size_of_element);
 
 /*!
  * Read elements from c_file to buffer
@@ -96,10 +132,11 @@ FileSystemResult c_fileDeleteElements(char* c_file_name, time_unix from_time,
  * FS_SUCCSESS on success.
  */
 FileSystemResult c_fileRead(char* c_file_name, byte* buffer, int size_of_buffer,
-		time_unix from_time, time_unix to_time, int* read,time_unix* last_read_time);
+		time_unix from_time, time_unix to_time, int* read,time_unix* last_read_time, unsigned int resolution);
 FileSystemResult c_fileGetSizeOfElement(char* c_file_name,int* element_size);
 //print c_file for testing
-void print_file(char* c_file_name);
+void print_files(char* c_file_name);
+int print_file(char* c_file_name);
 FileSystemResult c_fileReset(char* c_file_name);
 
 int FS_test();
