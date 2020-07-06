@@ -5,6 +5,15 @@
 #include "TelemetryFiles.h"
 #include "TLM_management.h"
 
+typedef enum{
+	eps_tlm,
+	trxvu_tlm,
+	ant_tlm,
+	solar_panel_tlm,
+	wod_tlm,
+	log_tlm
+	//operational_data_tlm
+}subsystem_tlm;
 
 typedef struct __attribute__ ((__packed__)) OperationalData
 {
